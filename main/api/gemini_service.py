@@ -83,7 +83,7 @@ def classify_ewaste_image(
     Falls back gracefully to high-fidelity pilot simulator if API key is not yet set.
     """
     client = get_gemini_client()
-    model_name = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    model_name = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
 
     if client:
         try:

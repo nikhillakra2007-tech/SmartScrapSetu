@@ -304,7 +304,7 @@ export default function CollectorPortal({
   const [submittedLotCode, setSubmittedLotCode] = useState<string | null>(null);
 
   // Optional Live Gemini API Key State
-  const [geminiApiKey, setGeminiApiKey] = useState<string>('');
+  const [geminiApiKey, setGeminiApiKey] = useState<string>(process.env.NEXT_PUBLIC_GEMINI_API_KEY || '');
   const [showApiKeyModal, setShowApiKeyModal] = useState<boolean>(false);
 
   // 2-Way Voice Assistant (Speech-to-Text Recognition)
@@ -551,7 +551,7 @@ export default function CollectorPortal({
         const pureBase64 = selectedImageBase64.split(',')[1] || selectedImageBase64;
         const mimeType = selectedImageBase64.split(';')[0].split(':')[1] || 'image/jpeg';
 
-        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiApiKey.trim()}`;
+        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${geminiApiKey.trim()}`;
 
         const prompt = `You are SmartScrapSetu Delhi E-Waste Classification Engine. Classify this scrap into CPCB taxonomy. Write human-readable descriptions in ${locale === "hi" ? "Hindi" : "English"}, retaining taxonomy codes in English. Return ONLY valid JSON with keys:
         parent_code, parent_name, sub_code, sub_name, condition, category_confidence (0-1), hazard_flags (array), is_hazardous (boolean), hazard_advisory, suggested_rate_per_kg (number), epr_schedule1_hint, identified_components (array), ai_notes.`;
@@ -587,7 +587,7 @@ export default function CollectorPortal({
             setAiResult({
               ...parsed,
               estimated_value: (parsed.suggested_rate_per_kg || 300) * weightKg,
-              ai_model_used: 'Gemini 2.5 Flash (Live Google API)',
+              ai_model_used: 'Gemini 3.5 Flash (Live Google API)',
             });
             setApiNotice('Photo inspection complete.');
             setIsAnalyzing(false);
@@ -596,7 +596,33 @@ export default function CollectorPortal({
         }
         throw new Error('Inspection unavailable');
       } catch (geminiErr) {
-        setApiNotice('Photo inspection could not complete. Showing a catalogue estimate instead.');
+        setApiNotice('Direct inspection unavailable, falling back to server...');
+      }
+    }
+
+    // 1b. Query server-side Next.js AI API (/api/ai/classify)
+    if (selectedImageBase64) {
+      try {
+        const res = await fetch('/api/ai/classify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            imageBase64: selectedImageBase64,
+            weightKg,
+            locale,
+          }),
+        });
+        if (res.ok) {
+          const parsed = await res.json();
+          if (parsed.success) {
+            setAiResult(parsed);
+            setApiNotice('Photo inspection complete via Gemini 2.5 Flash.');
+            setIsAnalyzing(false);
+            return;
+          }
+        }
+      } catch (err) {
+        // Fall back to catalogue estimate
       }
     }
 

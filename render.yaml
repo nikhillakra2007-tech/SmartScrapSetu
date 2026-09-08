@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: scrapsetu-api
+    runtime: python
+    rootDir: main/api
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: info
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash
+      - key: SUPABASE_URL
+        value: https://hdlynafbuybvjbdcftjb.supabase.co
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        value: http://localhost:3000,https://scrapsetu.vercel.app,https://*.vercel.app
