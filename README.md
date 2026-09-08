@@ -84,10 +84,10 @@ SmartScrapSetu separates the public entry point from authenticated, role-tailore
             ▼                           ▼                           ▼                           ▼
    [ CITIZEN PORTAL ]          [ COLLECTOR APP ]           [ RECYCLER PORTAL ]         [ ADMIN CONSOLE ]
       ( /citizen )              ( /collector )                ( /recycler )               ( /admin )
-🔍 "Know Scrap's Worth"       ⚡ AI Scanner & Scale        📊 Facility Command Hub     🛡️ DPCC Regulatory Hub
-💰 Instant AI Valuation       📈 Live Price Board          📥 Incoming Lots Queue      🏭 Authorized Facility Registry
-🚚 Doorstep Pickup Booking    ⚠️ Worker Safety Directives  🛡️ Handover & QR Scale      📋 Digital Audit Manifests
-📍 Delhi Ward Dispatch        🚚 Citizen Pickups Dispatch  💳 Rate Card Manager (₹)    🚪 Single-Click Logout
+ "Know Scrap's Worth"        AI Scanner & Scale         Facility Command Hub      DPCC Regulatory Hub
+ Instant AI Valuation        Live Price Board           Incoming Lots Queue       Authorized Facility Registry
+ Doorstep Pickup Booking     Worker Safety Directives   Handover & QR Scale       Digital Audit Manifests
+ Delhi Ward Dispatch         Citizen Pickups Dispatch   Rate Card Manager (₹)     Single-Click Logout
 ```
 
 ### 2.1 Public Front Door (`/`)
