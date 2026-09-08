@@ -1,1 +1,168 @@
-.root{position:relative;flex-shrink:0;color:#173f30;font-family:var(--font-sans);letter-spacing:normal}.trigger{display:flex;align-items:center;gap:.45rem;border:1px solid #d7ddcf;border-radius:24px;background:transparent;padding:.65rem .85rem;color:inherit;font:inherit;font-size:.8rem;white-space:nowrap;cursor:pointer}.panel{position:absolute;right:0;top:calc(100% + 12px);z-index:1000;width:min(270px,85vw);background:#fbfcf7;border:1px solid #d7ddcf;border-radius:14px;box-shadow:0 12px 35px #092e2520;padding:14px}.searchLabel{display:grid;gap:10px;font-size:.8rem}.panel input{width:100%;padding:10px;border:1px solid #cbd5c2;border-radius:8px;background:white;color:#173f30;font:inherit}.panel button{display:flex;justify-content:space-between;align-items:center;width:100%;padding:12px;border:0;border-radius:8px;background:transparent;text-align:left;color:inherit;font:inherit;cursor:pointer}.panel button:hover,.panel button[aria-pressed=true]{background:#eaf0df}.panel p{font-size:.8rem;padding:12px}.root button:focus-visible,.root input:focus-visible{outline:2px solid #648538;outline-offset:3px}@media(max-width:700px){.trigger{padding:.5rem;font-size:.75rem}.trigger>svg:last-child{display:none}}
+.root {
+  position: relative;
+  flex-shrink: 0;
+  color: #173f30;
+  font-family: inherit;
+  letter-spacing: normal;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--border-subtle, #d7ddcf);
+  border-radius: 24px;
+  background: var(--bg-surface, #ffffff);
+  padding: 0.5rem 0.85rem;
+  color: var(--text-primary, #0b1220);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.trigger:hover {
+  background: var(--bg-surface-hover, #e4eae4);
+  border-color: var(--brand-border, #a3d9c4);
+}
+
+.activeLabel {
+  font-weight: 600;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+  transition: transform 0.18s ease;
+}
+
+.panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 1000;
+  width: min(300px, 90vw);
+  background: #ffffff;
+  border: 1px solid #dce5e0;
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(11, 18, 32, 0.14);
+  padding: 10px;
+  max-height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
+[dir="rtl"] .panel {
+  right: auto;
+  left: 0;
+}
+
+.searchWrap {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #748391;
+}
+
+[dir="rtl"] .searchIcon {
+  left: auto;
+  right: 10px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 10px 8px 32px;
+  border: 1px solid #cbd5c2;
+  border-radius: 8px;
+  background: #f8faf7;
+  color: #0b1220;
+  font: inherit;
+  font-size: 0.82rem;
+  outline: none;
+}
+
+[dir="rtl"] .searchInput {
+  padding: 8px 32px 8px 10px;
+}
+
+.searchInput:focus {
+  border-color: #087f5b;
+  background: #ffffff;
+  box-shadow: 0 0 0 2px rgba(8, 127, 91, 0.15);
+}
+
+.langList {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 280px;
+  padding-right: 4px;
+}
+
+.langOption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: start;
+  transition: background 0.14s ease;
+}
+
+.langOption:hover {
+  background: #f0f6f2;
+}
+
+.langOptionActive {
+  background: #e6f4ed;
+  font-weight: 600;
+  color: #087f5b;
+}
+
+.langTextWrap {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.langNative {
+  font-size: 0.88rem;
+}
+
+.langEnglish {
+  font-size: 0.75rem;
+  color: #748391;
+}
+
+.checkIcon {
+  color: #087f5b;
+  flex-shrink: 0;
+}
+
+.noMatches {
+  font-size: 0.82rem;
+  color: #748391;
+  text-align: center;
+  padding: 16px 8px;
+}
+
+@media (max-width: 700px) {
+  .trigger {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.8rem;
+  }
+}

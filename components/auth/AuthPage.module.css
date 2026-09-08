@@ -4,6 +4,7 @@
   min-height: 100vh;
   background: #f7f8f2;
 }
+
 .cover {
   position: relative;
   background: #092d25;
@@ -13,6 +14,7 @@
   padding: 40px 10%;
   overflow: hidden;
 }
+
 .brand {
   display: flex;
   align-items: center;
@@ -23,42 +25,50 @@
   text-decoration: none;
   font-weight: 500;
 }
+
 .brand span {
   font-size: 11px;
   align-self: flex-start;
 }
+
 .coverCopy {
   position: relative;
   z-index: 1;
   margin-top: 45px;
 }
+
 .eyebrow {
   font-size: 10px;
   letter-spacing: 2px;
   color: #c1d3af;
 }
+
 .coverCopy h2 {
-  font-size: clamp(42px, 4.5vw, 68px);
+  font-size: clamp(38px, 4vw, 64px);
   font-weight: 400;
-  letter-spacing: -3px;
+  letter-spacing: -2.5px;
   line-height: 1.1;
   color: inherit;
   margin: 24px 0;
 }
+
 .coverCopy h2 em {
   font-family: Georgia, serif;
   color: #d7ef88;
   font-weight: 400;
 }
+
 .coverCopy p {
   color: #b6c9b9;
   font-size: 14px;
-  max-width: 285px;
+  max-width: 300px;
   line-height: 1.8;
 }
+
 .authFlow {
   margin: 20px -15px 0;
 }
+
 .coverFoot {
   display: flex;
   justify-content: space-between;
@@ -68,237 +78,746 @@
   font-size: 10px;
   color: #bdcbb7;
 }
+
 .formPanel {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  padding: 35px;
+  align-items: center;
+  padding: 35px 25px;
+  position: relative;
 }
-.formShell {
+
+.topUtilityBar {
   width: 100%;
-  max-width: 420px;
+  max-width: 460px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
 }
+
 .back {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 8px;
   font-size: 12px;
   color: #697a66;
   text-decoration: none;
-  margin-bottom: 28px;
-}
-.formShell h1 {
-  font-size: 39px;
-  line-height: 1.2;
-  letter-spacing: -1.8px;
   font-weight: 500;
+}
+
+.back:hover {
+  color: #087f5b;
+}
+
+.formShell {
+  width: 100%;
+  max-width: 460px;
+}
+
+.primaryAuthHeading {
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -1.2px;
+  font-weight: 600;
   color: #153d2d;
+  margin: 0;
 }
-.subtitle {
+
+.primaryAuthSubtitle {
   font-size: 14px;
-  color: #74806c;
-  margin-top: 9px;
+  color: #52606d;
+  line-height: 1.55;
+  margin-top: 8px;
+  margin-bottom: 20px;
 }
-.tabs {
+
+/* Role Selector */
+.rolePickerSection {
+  margin-bottom: 20px;
+}
+
+.rolePickerLabel {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #153d2d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.roleSelectorGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.roleCardBtn {
   display: flex;
-  border-bottom: 1px solid #d9e0cf;
-  margin: 24px 0 20px;
-}
-.tabs button {
-  flex: 1;
-  padding: 12px;
-  border: 0;
-  background: none;
-  color: #77816d;
-  font-size: 14px;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 4px;
+  background: #ffffff;
+  border: 1px solid #dce5e0;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #52606d;
   cursor: pointer;
+  transition: all 0.16s ease;
 }
-.tabs .active {
+
+.roleCardBtn:hover {
+  background: #f4f8f5;
+  border-color: #a3d9c4;
+}
+
+.roleCardBtnActive {
+  background: #e8f6f0;
+  border-color: #087f5b;
+  color: #087f5b;
+  font-weight: 600;
+  box-shadow: 0 0 0 1px #087f5b;
+}
+
+/* Primary Aadhaar CTA Card */
+.aadhaarCtaCard {
+  background: linear-gradient(135deg, #ffffff 0%, #f7fbf8 100%);
+  border: 1.5px solid #087f5b;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(8, 127, 91, 0.08);
+  margin-bottom: 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+.aadhaarBadgeRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.aadhaarEmblemWrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #e6f6ef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #087f5b;
+}
+
+.fingerprintIcon {
+  color: #087f5b;
+}
+
+.aadhaarCtaBadge {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
   color: #153d2d;
-  border-bottom: 2px solid #153d2d;
+  letter-spacing: 0.2px;
 }
+
+.demoPill {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #087f5b;
+  background: #d3f0e3;
+  padding: 2px 7px;
+  border-radius: 12px;
+  margin-top: 2px;
+}
+
+.aadhaarPrimaryBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #087f5b;
+  color: #ffffff;
+  border: 0;
+  border-radius: 10px;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.16s ease;
+  box-shadow: 0 4px 14px rgba(8, 127, 91, 0.25);
+}
+
+.aadhaarPrimaryBtn:hover {
+  background: #066548;
+  transform: translateY(-1px);
+}
+
+.aadhaarPrivacyNotice {
+  display: block;
+  font-size: 11px;
+  color: #748391;
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+/* Demo Header & Grid */
+.demoHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 500;
+  color: #748391;
+  margin-bottom: 10px;
+  padding: 0 2px;
+}
+
+.demoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.demoGrid button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #ffffff;
+  border: 1px solid #dce5e0;
+  border-radius: 9px;
+  color: #153d2d;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.demoGrid button:hover {
+  background: #eff5f1;
+  border-color: #a3d9c4;
+}
+
+.demoGrid button svg:last-child {
+  margin-left: auto;
+  color: #748391;
+}
+
+/* Alternative Sign-in Section */
+.altSection {
+  border-top: 1px solid #e1e7e2;
+  padding-top: 16px;
+}
+
+.altToggleBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: 0;
+  color: #52606d;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 2px;
+}
+
+.altToggleBtn:hover {
+  color: #153d2d;
+}
+
+.rotate180 {
+  transform: rotate(180deg);
+}
+
+.altDrawerContent {
+  margin-top: 14px;
+}
+
 .google {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 13px;
-  width: 100%;
-  padding: 13px;
-  border: 1px solid #d4dccb;
-  border-radius: 9px;
-  background: #fff;
-  color: #264331;
-  font-size: 14px;
-  cursor: pointer;
-}
-.demoHeader {
-  display: flex;
-  justify-content: space-between;
   gap: 10px;
-  font-size: 11px;
-  color: #617457;
-  margin: 22px 0 10px;
-}
-.demoHeader span:last-child {
-  color: #849079;
-  font-size: 10px;
-}
-.demoGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 9px;
-}
-.demoGrid button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  padding: 13px 6px;
-  border-radius: 8px;
-  background: #eaf0df;
-  color: #32502d;
-  border: 1px solid #dfe6d4;
+  width: 100%;
+  padding: 11px 16px;
+  background: #ffffff;
+  border: 1px solid #dce5e0;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #153d2d;
   cursor: pointer;
-  font-size: 11px;
-  transition:
-    background 0.2s,
-    transform 0.2s;
 }
-.demoGrid button:hover {
-  background: #dce9c7;
-  transform: translateY(-2px);
+
+.google:hover {
+  background: #f8faf8;
 }
+
 .divider {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin: 22px 0;
+  text-align: center;
+  margin: 16px 0;
+  color: #748391;
   font-size: 11px;
-  color: #849079;
 }
-.divider:before,
-.divider:after {
-  content: "";
-  height: 1px;
+
+.divider::before,
+.divider::after {
+  content: '';
   flex: 1;
-  background: #dde3d3;
+  border-bottom: 1px solid #e1e7e2;
 }
-.formShell form > label {
+
+.divider span {
+  padding: 0 10px;
+}
+
+.emailForm label {
   display: block;
-  font-size: 12px;
-  color: #3e5537;
-  margin: 15px 0 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #153d2d;
+  margin-bottom: 5px;
 }
+
 .input {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: #fff;
-  border: 1px solid #d6dfcd;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #dce5e0;
   border-radius: 8px;
-  padding: 0 13px;
-  color: #809075;
+  padding: 8px 12px;
+  margin-bottom: 12px;
 }
-.input:focus-within {
-  border-color: #66864b;
-  box-shadow: 0 0 0 3px #718a5120;
-}
+
 .input input {
-  border: 0;
-  outline: 0;
-  min-width: 0;
   width: 100%;
-  padding: 12px 0;
+  border: 0;
+  outline: none;
+  font-size: 13px;
   background: transparent;
-  color: #24432e;
-  font-size: 14px;
+  color: #0b1220;
 }
-.input button {
+
+.eyeBtn {
   background: transparent;
   border: 0;
-  display: flex;
-  color: #6c7e60;
   cursor: pointer;
-  padding: 5px;
+  color: #748391;
+  display: flex;
+  align-items: center;
 }
-.formShell select {
+
+.submitBtn {
   width: 100%;
-  background: white;
-  border: 1px solid #d6dfcd;
+  background: #153d2d;
+  color: #ffffff;
+  border: 0;
   border-radius: 8px;
   padding: 11px;
   font-size: 13px;
-  color: #344d30;
-}
-.submit {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #143e2c;
-  color: #f2f6e9;
-  border: 0;
-  border-radius: 9px;
-  width: 100%;
-  padding: 15px 18px;
-  margin-top: 22px;
-  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
+  margin-top: 4px;
 }
-.submit:hover {
-  background: #27523a;
+
+.submitBtn:hover {
+  background: #0f2c20;
 }
-.note {
-  text-align: center;
-  font-size: 10px;
-  color: #829078;
-  margin-top: 18px;
-}
+
+/* Alerts */
 .error,
 .success {
-  padding: 12px;
-  font-size: 13px;
-  background: #f8e9df;
-  color: #954a32;
-  border-radius: 7px;
-  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  font-size: 12px;
+  border-radius: 8px;
+  margin-bottom: 14px;
 }
+
+.error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
 .success {
-  background: #e9f0df;
-  color: #3a5c2c;
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
 }
-.screen button:disabled {
-  opacity: 0.5;
-  cursor: wait;
+
+/* Modals */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 45, 37, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
-.screen button:focus-visible,
-.screen a:focus-visible {
-  outline: 3px solid #90ac55;
-  outline-offset: 4px;
+
+.consentCard,
+.verificationCard {
+  background: #ffffff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border: 1px solid #dce5e0;
 }
+
+.consentHeader,
+.verifyModalHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 24px 24px 18px;
+  border-bottom: 1px solid #edf2ee;
+  position: relative;
+}
+
+.shieldIconWrap,
+.aadhaarBadgeWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #e6f6ef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.shieldIcon {
+  color: #087f5b;
+}
+
+.consentTitle,
+.verifyTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #153d2d;
+  margin: 0;
+}
+
+.consentSubtitle {
+  font-size: 13px;
+  color: #52606d;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+.closeBtn {
+  margin-left: auto;
+  background: transparent;
+  border: 0;
+  color: #748391;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.closeBtn:hover {
+  background: #f0f4f1;
+  color: #153d2d;
+}
+
+.consentBody,
+.verifyModalBody {
+  padding: 20px 24px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.consentSection {
+  margin-bottom: 18px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.sectionIcon {
+  color: #087f5b;
+}
+
+.sectionTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #153d2d;
+  margin: 0;
+}
+
+.sectionText {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #52606d;
+  margin: 0;
+  padding-left: 24px;
+}
+
+[dir="rtl"] .sectionText {
+  padding-left: 0;
+  padding-right: 24px;
+}
+
+.roleNoticeBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #eff7f3;
+  border: 1px solid #cce8dc;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #087f5b;
+  margin-top: 10px;
+}
+
+.consentActions,
+.verifyActionRow {
+  display: flex;
+  gap: 12px;
+  padding: 16px 24px 20px;
+  background: #f8faf8;
+  border-top: 1px solid #edf2ee;
+}
+
+.cancelBtn {
+  flex: 1;
+  padding: 11px 16px;
+  background: #ffffff;
+  border: 1px solid #dce5e0;
+  border-radius: 8px;
+  color: #52606d;
+  font-weight: 500;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.cancelBtn:hover {
+  background: #f0f4f1;
+}
+
+.agreeBtn,
+.submitVerifyBtn {
+  flex: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 16px;
+  background: #087f5b;
+  border: 0;
+  border-radius: 8px;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.agreeBtn:hover,
+.submitVerifyBtn:hover {
+  background: #066548;
+}
+
+/* Verification Modal UI */
+.demoWarningBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 11px;
+  margin-top: 6px;
+}
+
+.loadingState,
+.errorState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  gap: 14px;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+  color: #087f5b;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.successState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.successIcon {
+  color: #087f5b;
+  margin-bottom: 12px;
+}
+
+.successState h3 {
+  font-size: 18px;
+  color: #153d2d;
+  margin: 0 0 6px;
+}
+
+.successState p {
+  font-size: 13px;
+  color: #52606d;
+  margin: 0 0 16px;
+}
+
+.redirectHint {
+  font-size: 12px;
+  color: #087f5b;
+  font-weight: 500;
+}
+
+.phoneNoticeBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  background: #eff7f3;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  font-size: 12px;
+  color: #153d2d;
+}
+
+.phoneIcon {
+  color: #087f5b;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.phoneNoticeText {
+  display: block;
+}
+
+.demoHelperText {
+  display: block;
+  font-size: 11px;
+  color: #087f5b;
+  margin-top: 4px;
+}
+
+.errorBanner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+
+.otpInputGroup {
+  margin-bottom: 14px;
+}
+
+.otpLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #153d2d;
+  margin-bottom: 8px;
+}
+
+.otpInputField {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 20px;
+  letter-spacing: 6px;
+  text-align: center;
+  border: 1.5px solid #dce5e0;
+  border-radius: 10px;
+  outline: none;
+  font-family: monospace;
+}
+
+.otpInputField:focus {
+  border-color: #087f5b;
+  box-shadow: 0 0 0 3px rgba(8, 127, 91, 0.15);
+}
+
+.simulationPills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.simLabel {
+  font-size: 11px;
+  color: #748391;
+}
+
+.simPill {
+  font-size: 11px;
+  padding: 4px 8px;
+  background: #f0f4f1;
+  border: 1px solid #dce5e0;
+  border-radius: 6px;
+  color: #153d2d;
+  cursor: pointer;
+}
+
+.simPill:hover {
+  background: #e6eee8;
+  border-color: #087f5b;
+}
+
 @media (max-width: 850px) {
   .screen {
     grid-template-columns: 1fr;
   }
   .cover {
-    padding: 24px 7%;
-  }
-  .coverCopy,
-  .coverFoot,
-  .authFlow {
     display: none;
   }
   .formPanel {
-    padding: 30px 7% 45px;
-  }
-  .formShell {
-    max-width: 440px;
-  }
-  .back {
-    margin-bottom: 20px;
-  }
-  .formShell h1 {
-    font-size: 34px;
+    padding: 24px 16px;
   }
 }
-
-.demoGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
