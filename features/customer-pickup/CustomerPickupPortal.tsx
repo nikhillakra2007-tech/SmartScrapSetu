@@ -33,18 +33,26 @@ export default function CustomerPickupPortal() {
   const [submittedSuccess, setSubmittedSuccess] = useState(false);
 
   // Estimator State
-  const [estCategory, setEstCategory] = useState('PCB');
+  const [estCategory, setEstCategory] = useState('PLASTIC');
   const [estWeight, setEstWeight] = useState('10');
 
   const getEstRate = (cat: string) => {
     switch (cat) {
+      case 'PLASTIC': return 28;
+      case 'GLASS': return 12;
+      case 'PAPER': return 18;
+      case 'METAL_FERROUS': return 38;
+      case 'METAL_NONFERROUS': return 420;
+      case 'E_WASTE': return 280;
+      case 'TEXTILE': return 16;
+      case 'RUBBER_OTHER': return 22;
       case 'PCB': return 450;
       case 'BATTERY': return 180;
       case 'CABLE_WIRE': return 385;
       case 'LCD_LED_PANEL': return 110;
       case 'METAL_SCRAP': return 530;
       case 'WHOLE_DEVICE': return 480;
-      default: return 200;
+      default: return 50;
     }
   };
 
@@ -260,7 +268,7 @@ export default function CustomerPickupPortal() {
 
             <div className={styles.formGroup}>
               <label htmlFor="est-category" className={styles.formLabel}><T>
-                Select E-Waste Category
+                Select Material Category
               </T></label>
               <select
                 id="est-category"
@@ -268,12 +276,14 @@ export default function CustomerPickupPortal() {
                 value={estCategory}
                 onChange={(e) => setEstCategory(e.target.value)}
               >
-                <option value="PCB"><T>Printed Circuit Boards (Mobile/PC Motherboards)</T></option>
-                <option value="BATTERY"><T>Batteries (Lithium-Ion / Lead Acid)</T></option>
-                <option value="CABLE_WIRE"><T>Cables & Wires (Copper)</T></option>
-                <option value="LCD_LED_PANEL"><T>Flat Displays & Panels</T></option>
-                <option value="METAL_SCRAP"><T>Heavy Scrap Metal / Copper</T></option>
-                <option value="WHOLE_DEVICE"><T>Whole Intact Devices (Laptops/Phones)</T></option>
+                <option value="PLASTIC"><T>Plastic</T></option>
+                <option value="GLASS"><T>Glass</T></option>
+                <option value="PAPER"><T>Paper & Cardboard</T></option>
+                <option value="METAL_FERROUS"><T>Metal — Ferrous</T></option>
+                <option value="METAL_NONFERROUS"><T>Metal — Non-Ferrous</T></option>
+                <option value="E_WASTE"><T>E-Waste</T></option>
+                <option value="TEXTILE"><T>Textile / Cloth</T></option>
+                <option value="RUBBER_OTHER"><T>Rubber & Other</T></option>
               </select>
             </div>
 

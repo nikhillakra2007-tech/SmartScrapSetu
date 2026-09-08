@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import styles from './Safety.module.css';
 
-type Language = 'en' | 'hi' | 'mr';
+type Language = 'en' | 'hi';
 
 interface SafetyGuide {
   id: string;
@@ -210,13 +210,6 @@ export default function SafetyGuidanceView() {
             onClick={() => setSelectedLang('hi')}
           ><T>
             हिंदी (Hindi)
-          </T></button>
-          <button
-            type="button"
-            className={`${styles.langBtn} ${selectedLang === 'mr' ? styles.langBtnActive : ''}`}
-            onClick={() => setSelectedLang('mr')}
-          ><T>
-            मराठी (Marathi)
           </T></button>
         </div>
       </div>

@@ -47,39 +47,60 @@ interface MaterialOption {
 
 const MATERIAL_OPTIONS: MaterialOption[] = [
   {
-    id: "pcb",
-    name: "Printed Circuit Boards (PCB)",
-    code: "mobile_pcb",
-    ratePerKg: 450,
-    category: "PCB",
+    id: "plastic",
+    name: "Plastic (PET / HDPE)",
+    code: "mixed_plastic",
+    ratePerKg: 28,
+    category: "PLASTIC",
   },
   {
-    id: "battery",
-    name: "Lithium-Ion Battery Packs",
-    code: "li_ion_mobile_laptop",
-    ratePerKg: 180,
-    category: "BATTERY",
+    id: "glass",
+    name: "Glass Bottles & Cullet",
+    code: "cullet_bottles",
+    ratePerKg: 12,
+    category: "GLASS",
   },
   {
-    id: "copper",
-    name: "Stripped High-Purity Copper",
-    code: "copper_wire",
-    ratePerKg: 385,
-    category: "CABLE_WIRE",
+    id: "paper",
+    name: "Paper & Cardboard (OCC)",
+    code: "corrugated_kraft",
+    ratePerKg: 18,
+    category: "PAPER",
   },
   {
-    id: "crt",
-    name: "CRT Monitor & Leaded Glass",
-    code: "tv_crt",
-    ratePerKg: 95,
-    category: "CRT",
+    id: "metal_ferrous",
+    name: "Metal — Ferrous (Iron & Steel)",
+    code: "heavy_iron_steel",
+    ratePerKg: 38,
+    category: "METAL_FERROUS",
   },
   {
-    id: "server",
-    name: "Enterprise Server Backplanes",
-    code: "server_chassis",
+    id: "metal_nonferrous",
+    name: "Metal — Non-Ferrous (Copper / Brass)",
+    code: "copper_brass_alu",
+    ratePerKg: 420,
+    category: "METAL_NONFERROUS",
+  },
+  {
+    id: "e_waste",
+    name: "E-Waste & Circuit Boards",
+    code: "mixed_ewaste_pcb",
     ratePerKg: 280,
-    category: "PCB",
+    category: "E_WASTE",
+  },
+  {
+    id: "textile",
+    name: "Textile / Cloth Fabrics",
+    code: "cotton_synthetic_scrap",
+    ratePerKg: 16,
+    category: "TEXTILE",
+  },
+  {
+    id: "rubber_other",
+    name: "Rubber & Other (Tyres)",
+    code: "tyre_industrial_rubber",
+    ratePerKg: 22,
+    category: "RUBBER_OTHER",
   },
 ];
 
@@ -420,16 +441,16 @@ export default function CollectorWorkspace() {
           <T>{activeTab === "price-board" && <LivePriceBoard />}</T>
           <T>{activeTab === "safety-guidance" && <SafetyGuidanceView />}</T>
           <T>{activeTab === "customer-pickup" && <Pickups collector />}</T>
-          {activeTab === 'schedule' && (
+          <T>{activeTab === 'schedule' && (
             <CollectionSchedule 
               pickups={pickups} 
               onUpdatePickup={handleUpdatePickup}
               onCompletePickup={handleCompletePickup}
             />
-          )}
-          {activeTab === 'earnings' && (
+          )}</T>
+          <T>{activeTab === 'earnings' && (
             <EarningsAnalytics transactions={transactions} />
-          )}
+          )}</T>
         </div>
       </div>
 

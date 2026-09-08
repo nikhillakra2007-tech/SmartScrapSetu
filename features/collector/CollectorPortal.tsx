@@ -30,7 +30,18 @@ interface CollectorPortalProps {
   onNavigateToRecyclerQueue: () => void;
 }
 
-// CPCB 11-Category Knowledge Base for Dynamic Vision & Voice Matching
+export const MAIN_8_CATEGORIES = [
+  'plastic',
+  'glass',
+  'paper',
+  'metal_ferrous',
+  'metal_nonferrous',
+  'e_waste',
+  'textile',
+  'rubber_other',
+] as const;
+
+// 8 Main Canonical Categories Knowledge Base for Dynamic Vision & Matching
 const CATEGORY_PROFILES: Record<string, {
   parent_code: string;
   parent_name: string;
@@ -45,9 +56,122 @@ const CATEGORY_PROFILES: Record<string, {
   components: string[];
   notes: string;
 }> = {
+  plastic: {
+    parent_code: 'PLASTIC',
+    parent_name: 'Plastic',
+    sub_code: 'mixed_plastic',
+    sub_name: 'Rigid & Film Recyclable Plastic (PET/HDPE/PP)',
+    condition: 'scrap',
+    defaultRate: 28,
+    isHazardous: false,
+    hazardFlags: [],
+    hazardAdvisory: 'Non-hazardous. Keep clean and dry. Segregate bottles and containers for highest recycling value.',
+    eprHint: 'Plastic Waste Management Rules (PWMR 2022)',
+    components: ['PET Bottles', 'HDPE Containers', 'PP Buckets', 'Rigid Moulded Scrap'],
+    notes: 'Sorted post-consumer and commercial recyclable plastic scrap.',
+  },
+  glass: {
+    parent_code: 'GLASS',
+    parent_name: 'Glass',
+    sub_code: 'cullet_bottles',
+    sub_name: 'Whole Glass Bottles & Crushed Cullet',
+    condition: 'scrap',
+    defaultRate: 12,
+    isHazardous: true,
+    hazardFlags: ['sharp_edges', 'cut_injury_risk'],
+    hazardAdvisory: 'Contains breakable sharp glass. Wear puncture-resistant gloves and protective eye shields.',
+    eprHint: 'Solid Waste Management & Glass Circularity Standards',
+    components: ['Flint / Clear Bottles', 'Amber Beverage Glass', 'Flat Window Glass', 'Cullet'],
+    notes: 'Sorted glass containers and clean cullet scrap without ceramic or stone contamination.',
+  },
+  paper: {
+    parent_code: 'PAPER',
+    parent_name: 'Paper & Cardboard',
+    sub_code: 'corrugated_kraft',
+    sub_name: 'Corrugated Cardboard (OCC) & Kraft Paper',
+    condition: 'scrap',
+    defaultRate: 18,
+    isHazardous: false,
+    hazardFlags: [],
+    hazardAdvisory: 'Non-hazardous. Store bundled in dry, sheltered space away from moisture and open flames.',
+    eprHint: 'CPCB Recycled Paper Pulp Recovery Standards',
+    components: ['Corrugated Cardboard', 'Kraft Linerboard', 'Old Newsprint (ONP)', 'Office Shreds'],
+    notes: 'Dry, bundled kraft cardboard and paper scrap ready for pulp mill recovery.',
+  },
+  metal_ferrous: {
+    parent_code: 'METAL_FERROUS',
+    parent_name: 'Metal — Ferrous (Iron & Steel)',
+    sub_code: 'heavy_iron_steel',
+    sub_name: 'Heavy Melting Scrap (HMS), Steel & Cast Iron',
+    condition: 'scrap',
+    defaultRate: 38,
+    isHazardous: false,
+    hazardFlags: ['heavy_pinch_hazard', 'tetanus_rust_risk'],
+    hazardAdvisory: 'Wear puncture-resistant leather gloves and safety footwear. Beware of jagged edges and pinch points.',
+    eprHint: 'Ministry of Steel Secondary Metal Framework',
+    components: ['Structural Steel Sections', 'Rebar Offcuts', 'Cast Iron Parts', 'Sheet Steel'],
+    notes: 'Magnetic ferrous iron and steel scrap ready for induction furnace melting.',
+  },
+  metal_nonferrous: {
+    parent_code: 'METAL_NONFERROUS',
+    parent_name: 'Metal — Non-Ferrous (Copper, Brass, Aluminium)',
+    sub_code: 'copper_brass_alu',
+    sub_name: 'Clean Heavy Copper, Yellow Brass & Extruded Aluminium',
+    condition: 'scrap',
+    defaultRate: 420,
+    isHazardous: false,
+    hazardFlags: [],
+    hazardAdvisory: 'Premium non-ferrous recovery stream. Keep free of solder, iron fasteners, and zinc for maximum return.',
+    eprHint: 'CPCB & JNARDDC Non-Ferrous Secondary Metal Ledger',
+    components: ['Electrolytic Copper Tube/Busbar', 'Honey Brass Scrap', '6063 Architectural Aluminium'],
+    notes: 'Non-magnetic, high conductivity precious non-ferrous metal scrap.',
+  },
+  e_waste: {
+    parent_code: 'E_WASTE',
+    parent_name: 'E-Waste',
+    sub_code: 'mixed_ewaste_pcb',
+    sub_name: 'Printed Circuit Boards, Batteries & Whole Devices',
+    condition: 'scrap',
+    defaultRate: 280,
+    isHazardous: true,
+    hazardFlags: ['heavy_metals', 'battery_risk', 'leaded_solder'],
+    hazardAdvisory: 'Regulated hazardous e-waste. Do not burn wires or crush battery cells. Deliver intact to authorized recycler.',
+    eprHint: 'CPCB E-Waste Management Rules 2022 (Schedule I)',
+    components: ['Circuit Boards (PCBs)', 'Lithium Battery Packs', 'Copper Wiring Harness', 'Telecom Modules'],
+    notes: 'High-value electronic components containing regulated fractions and precious metals.',
+  },
+  textile: {
+    parent_code: 'TEXTILE',
+    parent_name: 'Textile / Cloth',
+    sub_code: 'cotton_synthetic_scrap',
+    sub_name: 'Post-Consumer Fabrics & Garment Cutting Waste',
+    condition: 'scrap',
+    defaultRate: 16,
+    isHazardous: false,
+    hazardFlags: ['flammable_fibers'],
+    hazardAdvisory: 'Non-hazardous. Store in a dry, dust-free covered space to prevent mold and fiber deterioration.',
+    eprHint: 'Textile Waste Recovery & Circular Fashion Framework',
+    components: ['Pure Cotton Rags', 'Denim Fabric Scrap', 'Polyester Blends', 'Yarn Waste'],
+    notes: 'Sorted textile waste suitable for mechanical shredding, wiping rags, or yarn regeneration.',
+  },
+  rubber_other: {
+    parent_code: 'RUBBER_OTHER',
+    parent_name: 'Rubber & Other',
+    sub_code: 'tyre_industrial_rubber',
+    sub_name: 'End-of-Life Tyres (ELT) & Industrial Rubber Scrap',
+    condition: 'scrap',
+    defaultRate: 22,
+    isHazardous: false,
+    hazardFlags: ['fire_hazard_smolder'],
+    hazardAdvisory: 'Never ignite rubber open-air (prohibited by CPCB). Stack neatly on pallets with fire extinguisher nearby.',
+    eprHint: 'CPCB Tyre Waste Management Rules 2022 (Form 1)',
+    components: ['Tyre Casings', 'Conveyor Belt Sections', 'Moulded Rubber Gaskets', 'Crumb Rubber'],
+    notes: 'Whole and shredded vulcanized rubber stock suitable for reclaim rubber manufacturing or pyrolysis.',
+  },
+  // Backward compatibility aliases
   pcb: {
-    parent_code: 'PCB',
-    parent_name: 'Printed Circuit Boards',
+    parent_code: 'E_WASTE',
+    parent_name: 'E-Waste',
     sub_code: 'mobile_pcb',
     sub_name: 'High-Grade Telecom & Mobile PCB',
     condition: 'scrap',
@@ -60,8 +184,8 @@ const CATEGORY_PROFILES: Record<string, {
     notes: 'Multilayer FR-4 fiberglass substrate with intact surface-mount microelectronics.',
   },
   battery: {
-    parent_code: 'BATTERY',
-    parent_name: 'Batteries',
+    parent_code: 'E_WASTE',
+    parent_name: 'E-Waste',
     sub_code: 'li_ion_mobile_laptop',
     sub_name: 'Lithium-Ion / Li-Polymer Battery Pack',
     condition: 'scrap',
@@ -74,8 +198,8 @@ const CATEGORY_PROFILES: Record<string, {
     notes: 'Secondary rechargeable cell assembly inspected. Signs of casing deformation detected.',
   },
   cables: {
-    parent_code: 'CABLE_WIRE',
-    parent_name: 'Cables & Wires',
+    parent_code: 'METAL_NONFERROUS',
+    parent_name: 'Metal — Non-Ferrous (Copper, Brass, Aluminium)',
     sub_code: 'copper_wire',
     sub_name: 'Insulated Copper Power & Telecom Cable',
     condition: 'scrap',
@@ -88,8 +212,8 @@ const CATEGORY_PROFILES: Record<string, {
     notes: 'Dense copper wire bundle with standard thermoplastic insulation.',
   },
   crt: {
-    parent_code: 'CRT',
-    parent_name: 'Cathode Ray Tubes',
+    parent_code: 'E_WASTE',
+    parent_name: 'E-Waste',
     sub_code: 'tv_crt',
     sub_name: 'CRT Television / Monitor Glass Tube (Leaded)',
     condition: 'scrap',
@@ -102,8 +226,8 @@ const CATEGORY_PROFILES: Record<string, {
     notes: 'Intact vacuum tube envelope with heavy leaded radiation shielding glass.',
   },
   display: {
-    parent_code: 'LCD_LED_PANEL',
-    parent_name: 'Flat Panels',
+    parent_code: 'E_WASTE',
+    parent_name: 'E-Waste',
     sub_code: 'laptop_panel',
     sub_name: 'LCD / LED Display Panel Assembly',
     condition: 'damaged',
@@ -116,8 +240,8 @@ const CATEGORY_PROFILES: Record<string, {
     notes: 'Flat matrix panel assembly with polarizer sheet and display driver ribbon connections.',
   },
   motor: {
-    parent_code: 'MOTOR_MAGNET',
-    parent_name: 'Motors & Magnets',
+    parent_code: 'METAL_FERROUS',
+    parent_name: 'Metal — Ferrous (Iron & Steel)',
     sub_code: 'compressor_motor',
     sub_name: 'Refrigerator / AC Compressor Motor',
     condition: 'scrap',
@@ -130,8 +254,8 @@ const CATEGORY_PROFILES: Record<string, {
     notes: 'Heavy electromagnetic stator core with tightly wound copper coils.',
   },
   copper_scrap: {
-    parent_code: 'METAL_SCRAP',
-    parent_name: 'Metal Scrap',
+    parent_code: 'METAL_NONFERROUS',
+    parent_name: 'Metal — Non-Ferrous (Copper, Brass, Aluminium)',
     sub_code: 'copper_scrap',
     sub_name: 'Pure Heavy Copper Scrap (Busbars & Tubes)',
     condition: 'scrap',
@@ -144,8 +268,8 @@ const CATEGORY_PROFILES: Record<string, {
     notes: 'Heavy gauge metallic copper with natural surface oxidation and high conductivity grade.',
   },
   device: {
-    parent_code: 'WHOLE_DEVICE',
-    parent_name: 'Whole Devices',
+    parent_code: 'E_WASTE',
+    parent_name: 'E-Waste',
     sub_code: 'laptop',
     sub_name: 'Complete Laptop / Notebook Computer',
     condition: 'damaged',
@@ -168,9 +292,9 @@ export default function CollectorPortal({
 
   const [selectedImageBase64, setSelectedImageBase64] = useState<string | null>(null);
   const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
-  const [activePreset, setActivePreset] = useState<string>('pcb');
-  const [detectedCategoryKey, setDetectedCategoryKey] = useState<string>('pcb');
-  const [weightKg, setWeightKg] = useState<number>(14.5);
+  const [activePreset, setActivePreset] = useState<string>('plastic');
+  const [detectedCategoryKey, setDetectedCategoryKey] = useState<string>('plastic');
+  const [weightKg, setWeightKg] = useState<number>(10.0);
   const [wardName, setWardName] = useState<string>('Okhla Industrial Area Phase 1');
 
   // AI & Inspection State
@@ -429,7 +553,7 @@ export default function CollectorPortal({
 
         const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiApiKey.trim()}`;
 
-        const prompt = `You are SmartScrapSetu Delhi E-Waste Classification Engine. Classify this scrap into CPCB 11-category taxonomy (PCB, BATTERY, CABLE_WIRE, CRT, LCD_LED_PANEL, MOTOR_MAGNET, METAL_SCRAP, WHOLE_DEVICE). Write human-readable descriptions in ${locale === "hi" ? "Hindi" : locale === "mr" ? "Marathi" : "English"}, retaining taxonomy codes in English. Return ONLY valid JSON with keys:
+        const prompt = `You are SmartScrapSetu Delhi E-Waste Classification Engine. Classify this scrap into CPCB taxonomy. Write human-readable descriptions in ${locale === "hi" ? "Hindi" : "English"}, retaining taxonomy codes in English. Return ONLY valid JSON with keys:
         parent_code, parent_name, sub_code, sub_name, condition, category_confidence (0-1), hazard_flags (array), is_hazardous (boolean), hazard_advisory, suggested_rate_per_kg (number), epr_schedule1_hint, identified_components (array), ai_notes.`;
 
         const geminiRes = await fetch(geminiUrl, {
@@ -659,7 +783,7 @@ export default function CollectorPortal({
           </div>
 
       <div className={`${styles.categoryPillsSection} drop-segment-2`}>
-        <label className={styles.pillsHeading} htmlFor="material-category"><T>Material</T></label>
+        <label className={styles.pillsHeading} htmlFor="material-category"><T>Select Category</T></label>
         <select id="material-category" className={styles.materialSelect} value={detectedCategoryKey} disabled={isAnalyzing}
           onChange={(event) => {
             const key = event.target.value;
@@ -667,10 +791,20 @@ export default function CollectorPortal({
             setActivePreset(key);
             setAiResult(null);
             setSubmittedLotCode(null);
+            const prof = CATEGORY_PROFILES[key];
+            if (prof && !selectedImageFile) {
+              setWeightKg(prof.defaultRate > 100 ? 5.0 : 15.0);
+            }
           }}>
-          <T>{Object.entries(CATEGORY_PROFILES).map(([key, prof]) => (
-            <option key={key} value={key}><T>{prof.parent_name}</T><T> · ₹</T><T>{prof.defaultRate}</T><T>/kg</T></option>
-          ))}</T>
+          {MAIN_8_CATEGORIES.map((key) => {
+            const prof = CATEGORY_PROFILES[key];
+            if (!prof) return null;
+            return (
+              <option key={key} value={key}>
+                {translate(prof.parent_name)} · ₹{prof.defaultRate}/kg
+              </option>
+            );
+          })}
         </select>
       </div>
 
