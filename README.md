@@ -1,265 +1,301 @@
-# SmartScrapSetu
+# SmartScrapSetu (스마트 스크랩 세투)
 
-> A digital bridge between citizens, local scrap collectors, authorized recyclers, and circular-economy administrators.
+> **Decentralized Circular Economy Infrastructure**: Bridging informal waste collectors, citizens, and DPCC/CPCB-authorized recyclers through Aadhaar identity verification, 18 Indian regional languages, AI material grading, and end-to-end cryptographic traceability.
 
 [![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Supabase](https://img.shields.io/badge/Supabase-ready-3FCF8E?logo=supabase&logoColor=white)](https://supabase.com/)
+[![Aadhaar Compliant](https://img.shields.io/badge/Aadhaar-Data%20Minimization-FF9933?logo=india)](https://uidai.gov.in/)
+[![18 Languages](https://img.shields.io/badge/Languages-18%20Indic%20Locales-138808)](https://en.wikipedia.org/wiki/Languages_of_India)
 [![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?logo=vercel)](https://vercel.com/)
 
-SmartScrapSetu turns fragmented scrap collection into a visible, guided workflow. Citizens can estimate material value and request pickups, collectors can inspect and aggregate scrap, recyclers can manage incoming lots and handovers, and administrators can review facilities and export compliance records.
+---
 
-The current application is designed as a Delhi NCR pilot. It runs immediately with local demo data and can connect to Supabase for authentication and storage.
+## 1. Architectural Overview
 
-## What the platform offers
-
-| Workspace | Primary capabilities |
-| --- | --- |
-| **Citizen** | Material price estimation, doorstep pickup requests, and browser-based demo tracking |
-| **Collector** | Photo-assisted identification, weight and location capture, price guidance, collection scheduling, earnings analytics, safety guidance, and lot creation |
-| **Recycler** | Incoming lot matching, rate-card management, facility overview, QR handover verification, and traceability records |
-| **Administrator** | Facility verification, network oversight, compliance manifests, role boundaries, and CSV report export |
-
-Additional experience features include English, Hindi, and Marathi content; responsive role-aware navigation; voice-assisted input where supported; an offline-outbox simulation; and a cinematic landing-page intro.
-
-## Architecture
+SmartScrapSetu is structured as a resilient Next.js 16 (App Router) digital infrastructure designed for field collectors, urban citizens, formal recycling facilities, and compliance auditors.
 
 ```mermaid
 flowchart TB
-    subgraph Experience[Experience layer]
-        Landing[Landing + video intro]
-        Auth[Authentication + demo access]
-        Citizen[Citizen workspace]
-        Collector[Collector workspace]
-        Recycler[Recycler workspace]
-        Admin[Admin workspace]
+    subgraph ClientLayer["Client & Field Layer"]
+        CitizenPortal["Citizen Portal (/citizen)"]
+        CollectorPortal["Collector Portal (/collector)"]
+        RecyclerHub["Recycler Facility Hub (/recycler)"]
+        AdminConsole["Regulatory Console (/admin)"]
+        AadhaarModal["Aadhaar Consent & OTP Modals"]
+        LangSwitcher["18-Language Indic Switcher"]
     end
 
-    subgraph Application[Application layer]
-        Shell[Role-aware application shell]
-        Intake[Scrap intake + inspection]
-        Pricing[Price board + valuation]
-        Pickup[Pickup scheduling]
-        Matching[Recycler matching]
-        Handover[QR handover + traceability]
-        Reporting[Compliance reporting]
-        I18n[EN / HI / MR language context]
+    subgraph AppEngine["Next.js 16 Application Engine"]
+        AppShell["Role-Aware Navigation & Layout Shell"]
+        
+        subgraph AuthSystem["Identity & Verification Subsystem"]
+            AadhaarRoutes["/api/auth/aadhaar/*<br/>(start, verify-otp, status, callback)"]
+            ProviderFactory["Aadhaar Provider Factory"]
+            MockProvider["Mock Provider (Demo Mode)"]
+            ProdProvider["Production Gateway Connector"]
+            GoogleFallback["Modular Google OAuth Drawer"]
+        end
+
+        subgraph LocalizationSystem["18-Language Multilingual Engine"]
+            LocaleRegistry["Indic Registry (18 Languages)"]
+            RegionalDict["Universal UI Regional Dictionary"]
+            LegacyDict["Devanagari Legacy Maps"]
+            TranslationResolver["Unified translateKey() Resolver"]
+        end
+
+        subgraph CoreWorkspaces["Domain Workspaces & Pipelines"]
+            IntakeEngine["8-Category Scrap Scanner & AI Inferences"]
+            PriceBoard["Delhi Benchmark Price Board"]
+            ScheduleEngine["Doorstep Pickup Scheduler"]
+            HandoverEngine["Cryptographic QR Handover & EPR Manifests"]
+        end
     end
 
-    subgraph Domain[Domain and state]
-        Models[Typed domain models]
-        Demo[Mock data + React state]
-        Browser[(LocalStorage demo state)]
+    subgraph DataServices["Data & External Services"]
+        SupabaseDB[("Supabase PostgreSQL / RLS")]
+        GeminiVision["Gemini 2.5 Flash Multimodal Vision API"]
+        StorageBuckets[("Supabase Storage (Lots, Manifests)")]
     end
 
-    subgraph Services[Connected services]
-        Supabase[(Supabase Auth / Postgres / Storage)]
-        Gemini[Gemini multimodal inspection]
-        Vercel[Vercel deployment · Mumbai region]
-    end
+    CitizenPortal & CollectorPortal & RecyclerHub & AdminConsole --> AppShell
+    AppShell --> LangSwitcher
+    LangSwitcher --> TranslationResolver
+    TranslationResolver --> RegionalDict & LocaleRegistry & LegacyDict
 
-    Landing --> Auth
-    Auth --> Citizen & Collector & Recycler & Admin
-    Citizen & Collector & Recycler & Admin --> Shell
-    Shell --> I18n
-    Citizen --> Pricing & Pickup
-    Collector --> Intake & Pricing & Pickup
-    Recycler --> Matching & Handover
-    Admin --> Reporting
-    Intake & Pricing & Pickup & Matching & Handover & Reporting --> Models
-    Models --> Demo --> Browser
-    Auth -. optional connection .-> Supabase
-    Intake -. optional live analysis .-> Gemini
-    Models -. generated API types .-> Supabase
-    Experience --> Vercel
+    AadhaarModal --> AadhaarRoutes
+    AadhaarRoutes --> ProviderFactory
+    ProviderFactory --> MockProvider & ProdProvider
+    AadhaarRoutes -. Session Cookie .-> AppShell
+
+    CollectorPortal --> IntakeEngine
+    IntakeEngine -. Visual Diagnosis .-> GeminiVision
+    IntakeEngine & HandoverEngine --> SupabaseDB & StorageBuckets
 ```
 
-### Material journey
+---
+
+## 2. Core Workspaces & Key Capabilities
+
+| Workspace | Target Audience | Primary Features |
+|---|---|---|
+| **Citizen** | Households, Offices, Housing Societies | Price estimation across 8 material streams, doorstep pickup scheduling, collector tracking, and estimated carbon diversion stats. |
+| **Collector** | Informal Waste Collectors, Scrap Aggregators | 8-Category AI Scrap Scanner, scale weight input, DPCC ward cluster matching, collection schedules, earnings analytics, and field worker safety SOPs. |
+| **Recycler** | CPCB / DPCC Authorized Recyclers | Incoming feedstock lot matching, custom rate-card publishing, facility overview, and QR cryptographic handover receipt verification. |
+| **Administrator** | Regulators, Urban Local Bodies, Auditors | Authorized facility registry, immutable chain of custody manifests (SHA-256), verification queues, and EPR compliance telemetry export. |
+
+---
+
+## 3. Aadhaar-Based Identity Verification Flow
+
+SmartScrapSetu replaces basic social login with a regulatory-compliant **Aadhaar identity verification system** built on strict **data minimization** principles:
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor C as Citizen
-    participant K as Collector
-    participant AI as Inspection engine
-    participant R as Recycler
-    participant A as Administrator
+    actor User as Collector / Citizen
+    participant Client as Web Frontend (/auth)
+    participant API as Next.js API (/api/auth/aadhaar)
+    participant Provider as Aadhaar Provider (Mock/Prod)
+    participant DB as Supabase DB
 
-    C->>K: Request a pickup or bring material
-    K->>AI: Add photo, category, weight, and location
-    alt Gemini key and image available
-        AI-->>K: Classification and hazard flags
-    else Demo/catalogue mode
-        AI-->>K: Category estimate and pilot rate
-    end
-    K->>R: Create a traceable material lot
-    R-->>K: Review match and accept the lot
-    K->>R: Complete QR-backed handover
-    R->>A: Produce traceability record
-    A-->>A: Review facilities and export compliance report
+    User->>Client: Selects Role & Clicks "Verify with Aadhaar"
+    Client->>Client: Displays DPCC / CPCB Compliance Consent Modal
+    User->>Client: Agrees to terms & grants consent
+    Client->>API: POST /api/auth/aadhaar/start { role, consentGiven: true }
+    API->>Provider: startVerification(sessionOptions)
+    Provider-->>API: VerificationSession (Masked UID, TTL 10m, Session Token)
+    API-->>Client: Returns session ID & masked UID
+    Client->>User: Renders 6-Digit OTP Verification Modal (with Demo Pills)
+    User->>Client: Enters OTP (e.g. 123456)
+    Client->>API: POST /api/auth/aadhaar/verify-otp { sessionId, otp }
+    API->>Provider: verifyOtp(sessionId, otp)
+    Provider-->>API: NormalizedVerificationResult (Verified Name, Reference ID)
+    API->>DB: Records identity verification token (Zero raw PII)
+    API-->>Client: Sets signed auth session cookie & returns redirect URL
+    Client->>User: Smooth animated redirect to Role Workspace (/collector or /citizen)
 ```
 
-## Application routes
-
-| Route | Experience |
-| --- | --- |
-| `/` | Public landing page and material-cycle introduction |
-| `/auth` | Sign in, sign up, Google OAuth entry point, and demo personas |
-| `/citizen` | Price estimator and pickup booking |
-| `/collector` | Inspection, schedules, earnings, and safety tools |
-| `/recycler` | Matched lots, rates, facility overview, and handovers |
-| `/admin` | Facility governance and compliance console |
-
-Protected workspaces validate the role stored for the current session and redirect users to the appropriate experience.
-
-## Repository structure
-
-```text
-smart-scrap-v2/
-├── app/                         # Next.js routes and global presentation
-├── components/
-│   ├── landing/                 # Public site and video intro
-│   ├── auth/                    # Authentication and demo access
-│   ├── citizen/                 # Citizen workspace composition
-│   ├── collector/               # Collector workspace composition
-│   ├── recycler/                # Recycler workspace composition
-│   ├── admin/                   # Governance workspace composition
-│   ├── shell/                   # Shared role-aware navigation
-│   ├── language/                # Translation context and switcher
-│   └── ui/                      # Reusable interface primitives
-├── features/
-│   ├── collector/               # Inspection, scheduling, and earnings
-│   ├── customer-pickup/         # Pickup request workflow
-│   ├── price-board/             # Indicative material pricing
-│   ├── recycler/                # Lot queue, overview, and rate cards
-│   ├── handover/                # Verification and chain of custody
-│   ├── pickups/                 # Shared citizen/collector requests
-│   └── safety/                  # Hazard handling guidance
-├── lib/                         # Services, dictionaries, and demo data
-├── types/                       # Generated schema and domain models
-├── scripts/                     # Supabase setup helpers
-└── public/                      # Images and intro video
-```
-
-## Technology stack
-
-| Layer | Technology |
-| --- | --- |
-| Web framework | Next.js 16 App Router |
-| UI runtime | React 19 and TypeScript |
-| Styling | Scoped CSS Modules and global design tokens |
-| Icons | Lucide React |
-| Motion | CSS transitions, route animation, video intro, and Lenis scrolling |
-| Authentication and data | Supabase client with a local demo fallback |
-| AI inspection | Optional Gemini 2.5 Flash multimodal analysis with catalogue fallback |
-| Localization | English, Hindi, and Marathi dictionary context |
-| Hosting | Vercel in the Mumbai region (`bom1`) |
-
-## Getting started
-
-### Prerequisites
-
-- Node.js 20+
-- npm
-- A modern browser
-
-### Install and run
-
-```bash
-git clone https://github.com/Yash3211/smart-scrap-v2.git
-cd smart-scrap-v2
-npm install
-cp .env.example .env.local
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000).
-
-Supabase credentials are optional for the demo. Leave the placeholder values in place, open `/auth`, and choose a demo persona to explore each workspace.
-
-## Environment configuration
-
-```dotenv
-NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
-
-# Server-side scripts only. Never expose this value in browser code.
-SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-
-# Optional external collector service endpoint.
-NEXT_PUBLIC_API_URL=http://localhost:8000
-
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-```
-
-### Runtime modes
-
-| Mode | Behavior |
-| --- | --- |
-| **Demo** | Uses typed mock data, React state, and browser storage. No real pickup or payment is created. |
-| **Supabase-connected** | Enables Supabase authentication and prepares project-backed data and storage. |
-| **Live inspection** | A Gemini key and uploaded image enable multimodal classification; otherwise the scanner returns a catalogue estimate. |
-
-## Core domain model
-
-```mermaid
-erDiagram
-    USER ||--o| COLLECTOR : owns
-    USER ||--o| RECYCLER : represents
-    COLLECTOR ||--o{ LOT : creates
-    LOT ||--o{ LOT_IMAGE : contains
-    MATERIAL_CATEGORY ||--o{ LOT : classifies
-    LOT ||--o{ LOT_MATCH : receives
-    RECYCLER ||--o{ LOT_MATCH : evaluates
-    RECYCLER ||--o{ RATE_CARD : publishes
-    LOT ||--o| TRANSACTION : becomes
-    TRANSACTION ||--o| HANDOVER_RECORD : records
-    CUSTOMER_PICKUP_REQUEST }o--o| COLLECTOR : assigned_to
-```
-
-Primary concepts include users, collectors, recyclers, material categories, lots, recycler matches, rate cards, transactions, pickup requests, handover records, safety content, and Delhi wards.
-
-## Useful commands
-
-| Command | Purpose |
-| --- | --- |
-| `npm run dev` | Start the development server |
-| `npm run build` | Create an optimized production build |
-| `npm start` | Run the production build |
-| `npm run update-types` | Regenerate Supabase-linked TypeScript definitions |
-| `node scripts/setup-storage-buckets.js` | Configure the required Supabase storage buckets |
-
-The storage script creates buckets for lot images, handover photos, pickup photos, and safety media. It requires `SUPABASE_SERVICE_ROLE_KEY` and should only run in a trusted environment.
-
-## Design principles
-
-- **Role clarity:** each participant sees tools relevant to their place in the material journey.
-- **Traceability:** lots, matches, transactions, and handovers form a visible chain of custody.
-- **Accessible guidance:** multilingual content, safety instructions, speech input, and responsive layouts support field use.
-- **Graceful fallback:** the product remains explorable when connected services are unavailable.
-- **Typed boundaries:** generated API definitions and domain models keep data contracts explicit.
-
-## Deployment
-
-The repository includes `vercel.json` with the Mumbai deployment region configured.
-
-1. Import the repository into Vercel.
-2. Add the required environment variables.
-3. Deploy using the standard Next.js build command.
-4. Add Supabase redirect URLs for the production domain if OAuth is enabled.
-
-## Project status
-
-SmartScrapSetu currently combines production-ready interface architecture with demo-first workflows. Authentication can connect to Supabase, while most operational records use typed mock data or browser-local state. Replace those adapters with persistent service calls as the pilot moves toward live operations.
-
-## Contributing
-
-1. Create a focused branch from `main`.
-2. Keep role boundaries and shared domain models intact.
-3. Run `npx tsc --noEmit` and `npm run build` before opening a pull request.
-4. Document new environment variables and workflow changes here.
+### Security & Privacy Guarantees
+- **Data Minimization**: Never stores or logs raw 12-digit Aadhaar numbers or OTPs.
+- **Reference Tokens**: Stores only synthetic reference IDs and masked identities (e.g., `XXXX-XXXX-9842`).
+- **Provider Abstraction**: Decoupled interface (`AadhaarProviderInterface`) allowing hot-swapping between `MockAadhaarProvider` (for testing) and `ProductionAadhaarProvider` via `AADHAAR_PROVIDER` env variable.
+- **Backward Compatibility**: Preserves Google OAuth in a collapsible secondary drawer.
 
 ---
 
-Built for a circular economy where every material keeps moving forward.
+## 4. 18-Language Indian Multilingual System
+
+The platform features an Indic multilingual engine covering **18 constitutional and widely spoken Indian languages**:
+
+| Code | Language | Native Script Name | Direction | Script Support |
+|---|---|---|---|---|
+| `en` | English | English | LTR | Latin Standard |
+| `hi` | Hindi | हिन्दी | LTR | Devanagari |
+| `mr` | Marathi | मराठी | LTR | Devanagari |
+| `bn` | Bengali | বাংলা | LTR | Bengali-Assamese |
+| `te` | Telugu | తెలుగు | LTR | Telugu |
+| `ta` | Tamil | தமிழ் | LTR | Tamil |
+| `gu` | Gujarati | ગુજરાતી | LTR | Gujarati |
+| `kn` | Kannada | ಕನ್ನಡ | LTR | Kannada |
+| `ml` | Malayalam | മലയാളം | LTR | Malayalam |
+| `pa` | Punjabi | ਪੰਜਾਬੀ | LTR | Gurmukhi |
+| `or` | Odia | ଓଡ଼ିଆ | LTR | Odia |
+| `as` | Assamese | অসমীয়া | LTR | Bengali-Assamese |
+| `ur` | Urdu | اردو | LTR | Perso-Arabic (Nastaliq) |
+| `mai` | Maithili | मैथिली | LTR | Devanagari |
+| `ne` | Nepali | नेपाली | LTR | Devanagari |
+| `kok` | Konkani | कोंकणी | LTR | Devanagari |
+| `sd` | Sindhi | سنڌي | LTR | Perso-Arabic (Sindhi) |
+| `dog` | Dogri | डोगरी | LTR | Devanagari |
+
+### Key Localization Highlights:
+1. **Uniform Left-Alignment**: All 18 language options in the dropdown menu start consistently on the left side with native names, English labels, and active checkmarks.
+2. **Standard LTR Flow**: Layout remains in standard LTR flow across all languages (including Urdu and Sindhi) to maintain consistent field UX.
+3. **Universal UI Dictionary (`regional-dictionary.ts`)**: Comprehensive translation map translating every core portal component into the selected regional language.
+4. **Indic Typography Fallbacks**: High-legibility font stacks in `globals.css` including `Noto Sans Devanagari`, `Nirmala UI`, `Noto Sans Gurmukhi`, `Noto Sans Tamil`, `Noto Sans Telugu`, and `Noto Nastaliq Urdu`.
+5. **Dual Persistence**: Preferences are stored in both `localStorage` and `NEXT_LOCALE` cookie for server-side localization rendering.
+
+---
+
+## 5. Standard 8 Material Categories
+
+SmartScrapSetu standardizes informal scrap sorting into 8 verified CPCB/DPCC material streams:
+
+1. **Plastic (PET / HDPE)** — Bottles, containers, hard plastics (~₹28/kg)
+2. **Glass Bottles & Cullet** — Soda glass, beer bottles, broken cullet (~₹12/kg)
+3. **Paper & Cardboard (OCC)** — Old corrugated cardboard, office waste, kraft (~₹18/kg)
+4. **Metal — Ferrous (Iron & Steel)** — Rebar, scrap sheet, structural iron (~₹38/kg)
+5. **Metal — Non-Ferrous (Copper / Brass)** — Pure copper busbars, heavy brass, aluminum (~₹420/kg)
+6. **E-Waste & Circuit Boards** — High-grade motherboards, populated PCBs, telecom cards (~₹280/kg)
+7. **Textile / Cloth Fabrics** — Industrial textile cuttings, cotton synthetic scrap (~₹16/kg)
+8. **Rubber & Other (Tyres)** — Commercial vehicle tyres, vulcanized crumb scrap (~₹14/kg)
+
+---
+
+## 6. Repository Structure
+
+```text
+smart-scrap-v2/
+├── app/                                 # Next.js 16 App Router pages and layouts
+│   ├── api/auth/aadhaar/                # Aadhaar identity verification API endpoints
+│   │   ├── start/route.ts               # POST: Enforce consent & start verification session
+│   │   ├── verify-otp/route.ts          # POST: Validate OTP & issue auth session cookie
+│   │   ├── status/[id]/route.ts         # GET: Poll sanitized verification status
+│   │   └── callback/route.ts            # POST: Webhook receiver for verification callbacks
+│   ├── auth/page.tsx                    # Identity verification & sign-in page
+│   ├── citizen/page.tsx                 # Citizen portal entry
+│   ├── collector/page.tsx               # Collector operations portal
+│   ├── recycler/page.tsx                # Recycler facility hub
+│   ├── globals.css                      # Global design tokens, typography, and scrollbars
+│   └── layout.tsx                       # Root layout wrapping LanguageProvider
+├── components/
+│   ├── auth/                            # Aadhaar consent modal, OTP modal, AuthPage
+│   ├── language/                        # Accessible 18-language switcher & context
+│   ├── shell/                           # Header, AppShell, notifications, and profile pills
+│   ├── collector/                       # Collector workspace components
+│   ├── citizen/                         # Citizen workspace components
+│   └── recycler/                        # Recycler facility components
+├── features/
+│   ├── collector/                       # AI Scrap Scanner, schedule, earnings analytics
+│   ├── customer-pickup/                 # Doorstep pickup booking flow
+│   ├── price-board/                     # Delhi 7-day rolling benchmark price board
+│   ├── recycler/                        # Matched lots queue, rate card manager
+│   ├── handover/                        # Cryptographic QR code handovers & traceability
+│   └── safety/                          # Worker safety guidance & CPCB hazard SOPs
+├── lib/
+│   ├── auth/aadhaar/                    # Aadhaar provider abstraction (mock & production)
+│   ├── language/locales/                # 18 language locale schemas, registry, regional-dict
+│   ├── mock-data.ts                     # Pre-seeded demo lots, price boards, recyclers
+│   └── supabase.ts                      # Supabase client connector
+├── supabase/migrations/                 # Declarative PostgreSQL schema migrations
+│   ├── 20260908184000_core_schema.sql   # Core platform tables (lots, matches, rate cards)
+│   └── 20260909000000_identity_verification.sql # Identity verification token registry & RLS
+├── main/                                # Synchronized mirror packages
+│   ├── api/                             # Python FastAPI / Gemini background services
+│   └── web/                             # Synced web source mirror
+├── package.json
+└── tsconfig.json
+```
+
+---
+
+## 7. Getting Started
+
+### Prerequisites
+- **Node.js**: v20 or later
+- **npm**: v10 or later
+
+### Installation & Local Run
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Yash3211/smart-scrap-v2.git
+cd smart-scrap-v2
+
+# 2. Checkout the backend branch
+git checkout backend
+
+# 3. Install dependencies
+npm install
+
+# 4. Copy environment configuration
+cp .env.example .env.local
+
+# 5. Run development server
+npm run dev
+```
+
+Open **[http://localhost:3000](http://localhost:3000)** in your browser.
+
+### Testing Identity Verification (Demo Mode)
+1. Navigate to **[http://localhost:3000/auth](http://localhost:3000/auth)**.
+2. Select your role (**Collector** or **Citizen**).
+3. Click **"Verify with Aadhaar"**.
+4. Review the CPCB compliance consent notice and click **"I Agree & Proceed"**.
+5. When the OTP modal appears:
+   - Click the **`123456 (Success)`** pill to autofill a valid demo OTP.
+   - Click **"Submit OTP & Verify"**.
+   - You will be authenticated and redirected to your workspace.
+
+---
+
+## 8. Environment Variables Reference
+
+```dotenv
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+
+# Aadhaar Verification Provider ('mock' or 'production')
+AADHAAR_PROVIDER=mock
+AADHAAR_API_BASE_URL=https://api.gateway.gov.in/aadhaar
+AADHAAR_CLIENT_ID=your-aadhaar-client-id
+AADHAAR_CLIENT_SECRET=your-aadhaar-client-secret
+
+# AI Vision Inspection (Optional)
+GEMINI_API_KEY=your-gemini-api-key
+
+# Application Settings
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+---
+
+## 9. Verification & Code Quality
+
+```bash
+# Run strict TypeScript validation
+npx tsc --noEmit
+
+# Run production build validation
+npm run build
+```
+
+---
+
+## 10. License & Compliance
+
+Developed under the **Digital India Circular Economy Initiative** for responsible scrap valorization, worker formalization, and transparent e-waste traceability.
