@@ -154,7 +154,7 @@ export default function AdminWorkspace() {
     try {
       localStorage.removeItem("scrapsetu_auth_user");
     } catch (e) {}
-    window.location.href = "/";
+    window.location.href = "/auth";
   };
 
   const handleApproveFacility = (id: string, name: string) => {

@@ -49,7 +49,7 @@ export default function MobileNav({
     try {
       localStorage.removeItem('scrapsetu_auth_user');
     } catch (e) {}
-    window.location.href = '/';
+    window.location.href = '/auth';
   };
 
   return (

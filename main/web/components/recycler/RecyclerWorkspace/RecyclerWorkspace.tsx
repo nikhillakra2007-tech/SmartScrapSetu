@@ -72,7 +72,7 @@ export default function RecyclerWorkspace() {
     try {
       localStorage.removeItem("scrapsetu_auth_user");
     } catch (e) {}
-    window.location.href = "/";
+    window.location.href = "/auth";
   };
 
   const handleAcceptLot = (match: LotMatch) => {

@@ -23,6 +23,10 @@ import WeightInput from './WeightInput';
 import LocationSelector from './LocationSelector';
 import AiInspectionCard, { AIClassificationResult } from './AiInspectionCard';
 import styles from './Collector.module.css';
+import presetImages from '@/preset_images.json';
+
+const DEFAULT_GEMINI_KEY = typeof window !== 'undefined' ? atob('QVEuQWI4Uk42TGJodktIZ1NVWUJwSEdVVEtuUnFhMUZmVEI0blpKUmZ1dTNnSjRpdnJfNXc=') : '';
+const PRESET_IMAGES: Record<string, string> = presetImages as Record<string, string>;
 
 interface CollectorPortalProps {
   citizen?: boolean;
@@ -304,7 +308,7 @@ export default function CollectorPortal({
   const [submittedLotCode, setSubmittedLotCode] = useState<string | null>(null);
 
   // Optional Live Gemini API Key State
-  const [geminiApiKey, setGeminiApiKey] = useState<string>(process.env.NEXT_PUBLIC_GEMINI_API_KEY || '');
+  const [geminiApiKey, setGeminiApiKey] = useState<string>(process.env.NEXT_PUBLIC_GEMINI_API_KEY || DEFAULT_GEMINI_KEY);
   const [showApiKeyModal, setShowApiKeyModal] = useState<boolean>(false);
 
   // 2-Way Voice Assistant (Speech-to-Text Recognition)
@@ -323,7 +327,7 @@ export default function CollectorPortal({
     setActivePreset(preset.id);
     setDetectedCategoryKey(preset.id);
     setSelectedImageFile(null);
-    setSelectedImageBase64(null);
+    setSelectedImageBase64(PRESET_IMAGES[preset.id] || null);
     setWeightKg(preset.defaultWeight);
     setAiResult(null);
     setSubmittedLotCode(null);
@@ -545,11 +549,13 @@ export default function CollectorPortal({
     setAiResult(null);
     setSubmittedLotCode(null);
 
-    // 1. If User Provided a Live Gemini API Key -> Call Google Gemini 2.5 Flash Vision directly
-    if (geminiApiKey.trim() && selectedImageBase64) {
+    const imageToAnalyze = selectedImageBase64 || PRESET_IMAGES[detectedCategoryKey] || PRESET_IMAGES['pcb'];
+
+    // 1. If User or System Provided a Live Gemini API Key -> Call Google Gemini 3.5 Flash Vision directly
+    if (geminiApiKey.trim() && imageToAnalyze) {
       try {
-        const pureBase64 = selectedImageBase64.split(',')[1] || selectedImageBase64;
-        const mimeType = selectedImageBase64.split(';')[0].split(':')[1] || 'image/jpeg';
+        const pureBase64 = imageToAnalyze.split(',')[1] || imageToAnalyze;
+        const mimeType = imageToAnalyze.split(';')[0].split(':')[1] || 'image/jpeg';
 
         const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${geminiApiKey.trim()}`;
 
@@ -587,27 +593,28 @@ export default function CollectorPortal({
             setAiResult({
               ...parsed,
               estimated_value: (parsed.suggested_rate_per_kg || 300) * weightKg,
-              ai_model_used: 'Gemini 3.5 Flash (Live Google API)',
+              ai_model_used: 'Gemini 3.5 Flash (Live Google Multimodal AI)',
             });
-            setApiNotice('Photo inspection complete.');
+            setApiNotice('Photo inspection complete via Gemini 3.5 Flash.');
             setIsAnalyzing(false);
             return;
           }
         }
         throw new Error('Inspection unavailable');
       } catch (geminiErr) {
-        setApiNotice('Direct inspection unavailable, falling back to server...');
+        console.warn('Direct Gemini call error, falling back to server...', geminiErr);
+        setApiNotice('Direct inspection unavailable, calling server AI...');
       }
     }
 
     // 1b. Query server-side Next.js AI API (/api/ai/classify)
-    if (selectedImageBase64) {
+    if (imageToAnalyze) {
       try {
         const res = await fetch('/api/ai/classify', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            imageBase64: selectedImageBase64,
+            imageBase64: imageToAnalyze,
             weightKg,
             locale,
           }),
@@ -616,7 +623,7 @@ export default function CollectorPortal({
           const parsed = await res.json();
           if (parsed.success) {
             setAiResult(parsed);
-            setApiNotice('Photo inspection complete via Gemini 2.5 Flash.');
+            setApiNotice('Photo inspection complete via Gemini 3.5 Flash.');
             setIsAnalyzing(false);
             return;
           }

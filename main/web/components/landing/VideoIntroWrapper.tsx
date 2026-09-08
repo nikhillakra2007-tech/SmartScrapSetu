@@ -12,12 +12,39 @@ export default function VideoIntroWrapper({
 }) {
   const [phase, setPhase] = useState<
     "playing" | "ended" | "toBlack" | "black" | "reveal" | "done"
-  >(hasPlayedIntroThisLoad ? "done" : "playing");
+  >("playing");
+
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((err: unknown) => {
+          console.warn("Autoplay deferred or prevented:", err);
+        });
+      }
+    }
+  }, []);
+
+  // Lock scrolling and reset scroll position while video is active
+  useEffect(() => {
+    if (phase !== "done") {
+      document.body.style.overflow = "hidden";
+      window.scrollTo(0, 0);
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [phase]);
 
   // Transition: video → black screen → dashboard
   const startTransition = useCallback(() => {
-    hasPlayedIntroThisLoad = true;
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("hasPlayedIntroThisLoad", "true");
+    }
     if (videoRef.current) videoRef.current.pause();
 
     // Step 1: Fade everything to solid black (0.6s)
@@ -104,6 +131,7 @@ export default function VideoIntroWrapper({
           playsInline
           preload="auto"
           onEnded={handleVideoEnd}
+          onError={handleSkip}
           className={`${styles.video} ${isBlackPhase ? styles.videoHidden : ""}`}
         >
           Your browser does not support the video tag.

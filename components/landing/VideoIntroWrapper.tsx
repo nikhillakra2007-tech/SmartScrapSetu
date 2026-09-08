@@ -14,13 +14,18 @@ export default function VideoIntroWrapper({
     "playing" | "ended" | "toBlack" | "black" | "reveal" | "done"
   >("playing");
 
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   useEffect(() => {
-    if (typeof window !== "undefined" && sessionStorage.getItem("hasPlayedIntroThisLoad")) {
-      setPhase("done");
+    if (videoRef.current) {
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((err: unknown) => {
+          console.warn("Autoplay deferred or prevented:", err);
+        });
+      }
     }
   }, []);
-
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   // Lock scrolling and reset scroll position while video is active
   useEffect(() => {
@@ -126,6 +131,7 @@ export default function VideoIntroWrapper({
           playsInline
           preload="auto"
           onEnded={handleVideoEnd}
+          onError={handleSkip}
           className={`${styles.video} ${isBlackPhase ? styles.videoHidden : ""}`}
         >
           Your browser does not support the video tag.
