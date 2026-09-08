@@ -225,7 +225,7 @@ export default function CollectorWorkspace() {
         />
         <span
           style={{
-            fontSize: "0.9rem",
+            fontSize: "1.8rem",
             color: "var(--text-secondary, #52606D)",
             fontWeight: 600,
           }}
@@ -285,7 +285,7 @@ export default function CollectorWorkspace() {
               backgroundColor: "var(--brand-tint)",
               border: "1px solid var(--brand-soft)",
               color: "var(--brand-primary)",
-              fontSize: "0.875rem",
+              fontSize: "1.75rem",
               fontWeight: 700,
               display: "flex",
               alignItems: "center",

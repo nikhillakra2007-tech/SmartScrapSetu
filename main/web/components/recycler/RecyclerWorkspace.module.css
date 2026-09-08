@@ -32,7 +32,7 @@
 
 .facilityTitle {
   font-family: var(--font-display, "Manrope", sans-serif);
-  font-size: 1.75rem;
+  font-size: 3.5rem;
   font-weight: 800;
   color: var(--text-primary);
   letter-spacing: -0.03em;
@@ -47,13 +47,13 @@
   border-radius: var(--radius-full);
   background-color: var(--brand-tint, #e8f6f0);
   color: var(--brand-primary, #087f5b);
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   border: 1px solid var(--brand-soft, #a3d9c4);
 }
 
 .facilitySubtitle {
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   color: var(--text-secondary);
   max-width: 70ch;
   line-height: 1.5;
@@ -72,7 +72,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--text-secondary);
   font-weight: 600;
 }
@@ -129,7 +129,7 @@
 
 .facilityHubName {
   font-family: var(--font-display, "Manrope", sans-serif);
-  font-size: 1.25rem;
+  font-size: 2.5rem;
   font-weight: 800;
   color: #ffffff;
   letter-spacing: -0.01em;
@@ -143,7 +143,7 @@
 }
 
 .facTag {
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   font-weight: 700;
   padding: 0.15rem 0.5rem;
   border-radius: var(--radius-xs);
@@ -173,7 +173,7 @@
 }
 
 .telemetryStatLabel {
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.5);
   font-family: var(--font-mono, monospace);
@@ -181,7 +181,7 @@
 }
 
 .telemetryStatValue {
-  font-size: 1.35rem;
+  font-size: 2.7rem;
   font-weight: 800;
   font-family: var(--font-display, "Manrope", sans-serif);
   color: #ffffff;
@@ -195,7 +195,7 @@
 }
 
 .sectionSwitcherLabel {
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -278,7 +278,7 @@
 
 .sectionCardTitle {
   font-family: var(--font-display, "Manrope", sans-serif);
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   font-weight: 700;
   color: var(--text-primary);
 }
@@ -288,13 +288,13 @@
 }
 
 .sectionCardDesc {
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   color: var(--text-muted);
   line-height: 1.4;
 }
 
 .sectionCardTag {
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   font-weight: 800;
   padding: 0.1rem 0.4rem;
   border-radius: var(--radius-xs);
@@ -363,18 +363,18 @@
   padding: 0 0 15px;
 }
 .facilityTitle {
-  font-size: 36px;
+  font-size: 72px;
   font-weight: 400;
   letter-spacing: -1.7px;
 }
 .facilitySubtitle {
-  font-size: 14px;
+  font-size: 28px;
   line-height: 1.8;
   max-width: 580px;
   margin-top: 8px;
 }
 .verifiedBadge {
-  font-size: 11px;
+  font-size: 22px;
   font-weight: 400;
   border: 0;
   background: #e5ecd8;
@@ -384,7 +384,7 @@
   gap: 15px;
 }
 .facilityMetaItem {
-  font-size: 11px;
+  font-size: 22px;
   font-weight: 400;
 }
 .facilityMetaMono {
@@ -403,7 +403,7 @@
 }
 @media (max-width: 700px) {
   .facilityTitle {
-    font-size: 29px;
+    font-size: 58px;
   }
   .facilityHeader {
     align-items: flex-start;

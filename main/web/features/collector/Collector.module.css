@@ -15,14 +15,14 @@
 }
 
 .pageTitle {
-  font-size: 1.75rem;
+  font-size: 3.5rem;
   font-weight: 800;
   color: var(--text-primary);
   letter-spacing: -0.03em;
 }
 
 .pageSubtitle {
-  font-size: 0.875rem;
+  font-size: 1.75rem;
   color: var(--text-secondary);
   margin-top: 0.25rem;
   max-width: 680px;
@@ -41,7 +41,7 @@
   align-items: center;
   gap: 0.45rem;
   padding: 0.5rem 1rem;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   font-weight: 700;
   border-radius: var(--radius-full);
   border: 1px solid var(--brand-soft);
@@ -70,7 +70,7 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.5rem 0.85rem;
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 600;
   border-radius: var(--radius-full);
   border: 1px solid var(--border-subtle);
@@ -90,7 +90,7 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.5rem 0.85rem;
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 600;
   border-radius: var(--radius-full);
   border: 1px solid var(--border-subtle);
@@ -112,7 +112,7 @@
 }
 
 .outboxBadge {
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   padding: 0.35rem 0.65rem;
   border-radius: var(--radius-full);
@@ -151,7 +151,7 @@
 }
 
 .transcriptLabel {
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 800;
   text-transform: uppercase;
   color: var(--brand-primary);
@@ -159,7 +159,7 @@
 }
 
 .transcriptText {
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   font-weight: 700;
   color: var(--text-primary);
 }
@@ -192,7 +192,7 @@
   padding: 0.6rem 0.95rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-subtle);
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   background-color: var(--bg-app);
   color: var(--text-primary);
 }
@@ -207,14 +207,14 @@
   border-radius: var(--radius-sm);
   background-color: var(--brand-primary);
   color: #FFFFFF;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   font-weight: 700;
   border: none;
   cursor: pointer;
 }
 
 .apiKeyHint {
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   color: var(--text-muted);
 }
 
@@ -233,7 +233,7 @@
 }
 
 .pillsHeading {
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 800;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -259,7 +259,7 @@
   border: 1px solid var(--border-subtle);
   background-color: var(--bg-surface);
   color: var(--text-secondary);
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   cursor: pointer;
   white-space: nowrap;
   transition: all var(--transition-fast);
@@ -279,7 +279,7 @@
 }
 
 .pillCode {
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   font-weight: 800;
   padding: 0.1rem 0.35rem;
   border-radius: var(--radius-sm);
@@ -328,13 +328,13 @@
 }
 
 .cardTitle {
-  font-size: 1.35rem;
+  font-size: 2.7rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 .cardSubtitle {
-  font-size: 0.875rem;
+  font-size: 1.75rem;
   color: var(--text-secondary);
   margin-top: 0.25rem;
 }
@@ -355,7 +355,7 @@
 }
 
 .inputLabel {
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -373,7 +373,7 @@
   border: 1px solid var(--border-subtle);
   background-color: var(--bg-app);
   color: var(--text-primary);
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   font-weight: 700;
   transition: border-color var(--transition-fast), background-color var(--transition-fast);
 }
@@ -388,14 +388,14 @@
 .weightUnit {
   position: absolute;
   right: 1rem;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   font-weight: 700;
   color: var(--text-muted);
   pointer-events: none;
 }
 
 .fieldHint {
-  font-size: 0.7rem;
+  font-size: 1.4rem;
   color: var(--text-muted);
   line-height: 1.35;
 }
@@ -406,7 +406,7 @@
   border-radius: var(--radius-full);
   background-color: var(--brand-primary);
   color: #FFFFFF;
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   font-weight: 700;
   border: none;
   cursor: pointer;
@@ -439,7 +439,7 @@
   background-color: var(--brand-tint);
   border: 1px solid var(--brand-soft);
   color: var(--brand-primary);
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   font-weight: 700;
 }
 
@@ -459,7 +459,7 @@
   background-color: var(--brand-tint);
   border: 1px solid var(--brand-soft);
   color: var(--brand-primary);
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   font-weight: 600;
 }
 
@@ -500,12 +500,12 @@
 }
 
 .presetLabel {
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   font-weight: 700;
 }
 
 .presetHint {
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   color: var(--text-muted);
 }
 
@@ -558,14 +558,14 @@
 }
 
 .dropzonePrimaryText {
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   font-weight: 700;
   color: var(--text-primary);
   display: block;
 }
 
 .dropzoneSubText {
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--text-secondary);
   margin-top: 0.25rem;
   display: block;
@@ -580,7 +580,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   font-weight: 600;
   padding: 0.25rem 0.6rem;
   border-radius: var(--radius-full);
@@ -613,7 +613,7 @@
   border: 1px solid var(--danger-border);
   border-radius: var(--radius-full);
   padding: 0.3rem 0.75rem;
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -624,7 +624,7 @@
 
 .replaceHint {
   margin-top: 0.75rem;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--text-muted);
 }
 
@@ -661,13 +661,13 @@
 }
 
 .emptyTitle {
-  font-size: 1.2rem;
+  font-size: 2.4rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 .emptyDescription {
-  font-size: 0.875rem;
+  font-size: 1.75rem;
   color: var(--text-secondary);
   max-width: 340px;
   line-height: 1.5;
@@ -695,13 +695,13 @@
 }
 
 .analyzingTitle {
-  font-size: 1.2rem;
+  font-size: 2.4rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 .analyzingDescription {
-  font-size: 0.875rem;
+  font-size: 1.75rem;
   color: var(--text-secondary);
   max-width: 340px;
   line-height: 1.45;
@@ -728,7 +728,7 @@
 }
 
 .cpcbTag {
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   font-weight: 800;
   padding: 0.25rem 0.6rem;
   border-radius: var(--radius-sm);
@@ -738,13 +738,13 @@
 }
 
 .resultSubName {
-  font-size: 1.2rem;
+  font-size: 2.4rem;
   font-weight: 800;
   color: var(--text-primary);
 }
 
 .categoryMeta {
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--text-secondary);
   margin-top: 0.4rem;
   display: block;
@@ -766,7 +766,7 @@
   align-items: center;
   gap: 0.35rem;
   padding: 0.35rem 0.75rem;
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   border-radius: var(--radius-full);
   border: 1px solid var(--brand-soft);
@@ -783,7 +783,7 @@
 }
 
 .confidenceScore {
-  font-size: 1.6rem;
+  font-size: 3.2rem;
   font-weight: 800;
   color: var(--brand-primary);
   font-family: 'Outfit', sans-serif;
@@ -791,7 +791,7 @@
 }
 
 .confidenceLabel {
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   color: var(--text-muted);
   text-transform: uppercase;
 }
@@ -813,13 +813,13 @@
 }
 
 .hazardTitle {
-  font-size: 0.875rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: var(--danger-text);
 }
 
 .hazardAdvisory {
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--danger-text);
   margin-top: 0.2rem;
   line-height: 1.45;
@@ -830,7 +830,7 @@
   background-color: var(--bg-app);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  font-size: 0.875rem;
+  font-size: 1.75rem;
   color: var(--text-secondary);
   line-height: 1.5;
 }
@@ -846,7 +846,7 @@
 }
 
 .sectionSmallHeading {
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -860,7 +860,7 @@
 }
 
 .componentTag {
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 600;
   padding: 0.25rem 0.65rem;
   border-radius: var(--radius-sm);
@@ -892,7 +892,7 @@
 }
 
 .metricLabel {
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--text-muted);
@@ -900,13 +900,13 @@
 }
 
 .metricValue {
-  font-size: 1.25rem;
+  font-size: 2.5rem;
   font-weight: 800;
   color: var(--text-primary);
 }
 
 .totalLabel {
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--brand-primary);
@@ -914,7 +914,7 @@
 }
 
 .totalValue {
-  font-size: 1.65rem;
+  font-size: 3.3rem;
   font-weight: 800;
   color: var(--brand-primary);
   font-family: 'Outfit', sans-serif;
@@ -923,7 +923,7 @@
 .regulatoryMeta {
   display: flex;
   justify-content: space-between;
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   color: var(--text-muted);
 }
 
@@ -933,7 +933,7 @@
   border-radius: var(--radius-full);
   background-color: var(--brand-primary);
   color: #FFFFFF;
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   font-weight: 700;
   border: none;
   cursor: pointer;
@@ -971,7 +971,7 @@
   justify-content: center;
   gap: 0.5rem;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 2rem;
   color: var(--brand-primary);
 }
 
@@ -980,7 +980,7 @@
 }
 
 .successSubtext {
-  font-size: 0.875rem;
+  font-size: 1.75rem;
   color: var(--text-secondary);
 }
 
@@ -991,7 +991,7 @@
   border: 1px solid var(--brand-primary);
   background-color: var(--brand-primary);
   color: #FFFFFF;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -1014,7 +1014,7 @@
 
 @media (max-width: 640px) {
   .pageTitle {
-    font-size: 1.35rem;
+    font-size: 2.7rem;
   }
   .card {
     padding: 1.25rem 1rem;
@@ -1044,7 +1044,7 @@
     padding: 0.55rem 0.35rem;
   }
   .presetLabel {
-    font-size: 0.6875rem;
+    font-size: 1.375rem;
   }
   .presetHint {
     display: none;
@@ -1064,36 +1064,36 @@
 /* Quiet, immediately usable scanner surface. */
 .container { gap: 24px; }
 .container :global([class*="drop-segment-"]) { animation: none; }
-.pageTitle { font-size: 26px; font-weight: 500; letter-spacing: -.8px; }
-.pageSubtitle { margin-top: 8px; font-size: 13px; }
+.pageTitle { font-size: 52px; font-weight: 500; letter-spacing: -.8px; }
+.pageSubtitle { margin-top: 8px; font-size: 26px; }
 .headerControls { gap: 8px; }
 .voiceAssistantBtn, .apiKeyToggleBtn, .offlineBtn { font-weight: 500; box-shadow: none; border-radius: 8px; }
 .categoryPillsSection { display: grid; grid-template-columns: auto minmax(0, 420px); align-items: center; justify-content: start; gap: 20px; padding: 0; background: transparent; border: 0; }
-.materialSelect { width: 100%; min-width: 0; padding: 13px 16px; border: 1px solid #cbd7bd; border-radius: 8px; background: #f9fbf4; color: #254631; font: inherit; font-size: 14px; }
-.pillsHeading { font-size: 13px; text-transform: none; letter-spacing: 0; }
+.materialSelect { width: 100%; min-width: 0; padding: 13px 16px; border: 1px solid #cbd7bd; border-radius: 8px; background: #f9fbf4; color: #254631; font: inherit; font-size: 28px; }
+.pillsHeading { font-size: 26px; text-transform: none; letter-spacing: 0; }
 .workGrid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 24px; align-items: stretch; }
 .card { min-width: 0; padding: 28px; border: 1px solid #dde5d3; border-radius: 14px; box-shadow: none; background: #fcfdf9; }
-.cardTitle { font-size: 17px; font-weight: 500; }
-.cardSubtitle { font-size: 12px; margin-top: 7px; }
+.cardTitle { font-size: 34px; font-weight: 500; }
+.cardSubtitle { font-size: 24px; margin-top: 7px; }
 .presetBtn { padding: 12px 8px; border-radius: 7px; box-shadow: none; }
-.presetLabel { font-weight: 500; font-size: 12px; }
+.presetLabel { font-weight: 500; font-size: 24px; }
 .dropzone { min-height: 175px; background: #f1f5e9; border-color: #c7d4b6; border-radius: 10px; }
 .uploadIconCircle { background: transparent; border: 0; box-shadow: none; width: 30px; height: 30px; }
-.dropzonePrimaryText { font-size: 16px; font-weight: 500; }
-.dropzoneSubText { font-size: 11px; }
+.dropzonePrimaryText { font-size: 32px; font-weight: 500; }
+.dropzoneSubText { font-size: 22px; }
 .inspectBtn { font-weight: 500; border-radius: 9px; box-shadow: none; padding: 15px; }
 .emptyCardState { border: 0; background: #f2f5eb; border-radius: 10px; min-height: 320px; }
-.estimatePlaceholder { font-size: 64px; font-weight: 400; color: #a1b38b; letter-spacing: -4px; margin-bottom: 20px; }
-.emptyTitle { font-size: 16px; font-weight: 500; }
-.emptyDescription { max-width: 260px; font-size: 12px; }
+.estimatePlaceholder { font-size: 96px; font-weight: 400; color: #a1b38b; letter-spacing: -4px; margin-bottom: 20px; }
+.emptyTitle { font-size: 32px; font-weight: 500; }
+.emptyDescription { max-width: 260px; font-size: 24px; }
 @media(max-width:800px) { .workGrid { grid-template-columns: 1fr; } .card { padding: 20px; } .categoryPillsSection { grid-template-columns: 1fr; gap: 9px; } }
 .categoryPillsSection { grid-template-columns: 1fr; gap: 8px; margin: 0 0 20px; }
-.scannerOptions { position: relative; align-self: center; font-size: 12px; color: var(--text-secondary); }
+.scannerOptions { position: relative; align-self: center; font-size: 24px; color: var(--text-secondary); }
 .scannerOptions > summary, .inspectionDetails > summary { cursor: pointer; padding: 10px 0; }
 .scannerOptions[open] .headerControls { position: absolute; top: 100%; right: 0; z-index: 5; padding: 16px; width: 280px; background: #fcfdf9; border: 1px solid #dce5d0; border-radius: 10px; box-shadow: 0 8px 24px #173b2010; }
-.estimateLead { display: flex; flex-direction: column; gap: 8px; padding-bottom: 22px; border-bottom: 1px solid #dce5d0; color: var(--text-secondary); font-size: 13px; }
-.estimateLead strong { font-size: clamp(36px, 4vw, 52px); font-weight: 400; color: var(--text-primary); letter-spacing: -2px; }
-.inspectionDetails { font-size: 12px; color: var(--text-secondary); }
+.estimateLead { display: flex; flex-direction: column; gap: 8px; padding-bottom: 22px; border-bottom: 1px solid #dce5d0; color: var(--text-secondary); font-size: 26px; }
+.estimateLead strong { font-size: clamp(72px, 8vw, 78px); font-weight: 400; color: var(--text-primary); letter-spacing: -2px; }
+.inspectionDetails { font-size: 24px; color: var(--text-secondary); }
 .inspectionDetails > summary { margin-bottom: 10px; }
 .confidenceScore, .confidenceLabel { display: none; }
 .inspectBtn:disabled { opacity: .55; cursor: not-allowed; transform: none; }

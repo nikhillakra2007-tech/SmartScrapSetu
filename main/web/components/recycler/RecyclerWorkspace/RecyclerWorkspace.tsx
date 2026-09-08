@@ -117,7 +117,7 @@ export default function RecyclerWorkspace() {
         />
         <span
           style={{
-            fontSize: "0.9rem",
+            fontSize: "1.8rem",
             color: "var(--text-secondary, #52606D)",
             fontWeight: 600,
           }}

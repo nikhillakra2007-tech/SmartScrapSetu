@@ -32,7 +32,7 @@
 
 .adminTitle {
   font-family: var(--font-display, "Manrope", sans-serif);
-  font-size: 1.75rem;
+  font-size: 3.5rem;
   font-weight: 800;
   color: var(--text-primary);
   letter-spacing: -0.03em;
@@ -47,13 +47,13 @@
   border-radius: var(--radius-full);
   background-color: #fef3c7;
   color: #92400e;
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   border: 1px solid #fde68a;
 }
 
 .adminSubtitle {
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   color: var(--text-secondary);
   max-width: 72ch;
   line-height: 1.5;
@@ -76,7 +76,7 @@
   color: var(--text-inverse);
   border: none;
   border-radius: var(--radius-md);
-  font-size: 0.875rem;
+  font-size: 1.75rem;
   font-weight: 700;
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -121,7 +121,7 @@
 }
 
 .statLabel {
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -141,7 +141,7 @@
 
 .statValue {
   font-family: var(--font-display, "Manrope", sans-serif);
-  font-size: 1.75rem;
+  font-size: 3.5rem;
   font-weight: 800;
   color: var(--text-primary);
   letter-spacing: -0.02em;
@@ -149,7 +149,7 @@
 }
 
 .statSubtext {
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   color: var(--text-secondary);
 }
 
@@ -210,14 +210,14 @@
 
 .terminalTitle {
   font-family: var(--font-mono, monospace);
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   color: #ffffff;
 }
 
 .terminalClusterTag {
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   font-weight: 800;
   padding: 0.15rem 0.5rem;
   border-radius: var(--radius-xs);
@@ -228,7 +228,7 @@
 }
 
 .terminalDesc {
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: rgba(255, 255, 255, 0.68);
 }
 
@@ -246,7 +246,7 @@
 }
 
 .termLabel {
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.5);
   font-family: var(--font-mono, monospace);
@@ -254,7 +254,7 @@
 }
 
 .termVal {
-  font-size: 1.25rem;
+  font-size: 2.5rem;
   font-weight: 800;
   font-family: var(--font-mono, monospace);
   color: var(--brand-secondary, #10b981);
@@ -268,7 +268,7 @@
 }
 
 .sectionSwitcherLabel {
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -351,7 +351,7 @@
 
 .sectionCardTitle {
   font-family: var(--font-display, "Manrope", sans-serif);
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   font-weight: 700;
   color: var(--text-primary);
 }
@@ -361,13 +361,13 @@
 }
 
 .sectionCardDesc {
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   color: var(--text-muted);
   line-height: 1.4;
 }
 
 .sectionCardTag {
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   font-weight: 800;
   padding: 0.1rem 0.4rem;
   border-radius: var(--radius-xs);
@@ -396,14 +396,14 @@
 
 .tableCardTitle {
   font-family: var(--font-display, "Manrope", sans-serif);
-  font-size: 1.15rem;
+  font-size: 2.3rem;
   font-weight: 800;
   color: var(--text-primary);
   margin: 0;
 }
 
 .tableCardCount {
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--brand-primary);
   background-color: var(--brand-tint);
@@ -420,13 +420,13 @@
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 0.875rem;
+  font-size: 1.75rem;
 }
 
 .dataTable th {
   background-color: var(--bg-surface-muted);
   padding: 0.85rem 1.4rem;
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -457,7 +457,7 @@
 
 .monoCode {
   font-family: var(--font-mono, monospace);
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   background-color: var(--bg-surface-muted);
   padding: 0.2rem 0.5rem;
   border-radius: var(--radius-xs);
@@ -475,7 +475,7 @@
   background-color: var(--brand-tint);
   color: var(--brand-primary);
   border: 1px solid var(--brand-soft);
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   font-weight: 700;
 }
 
@@ -488,7 +488,7 @@
   background-color: #fef3c7;
   color: #92400e;
   border: 1px solid #fde68a;
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   font-weight: 700;
 }
 
@@ -497,7 +497,7 @@
   align-items: center;
   gap: 0.35rem;
   padding: 0.4rem 0.85rem;
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--brand-primary);
   background-color: var(--brand-tint);
@@ -517,7 +517,7 @@
   align-items: center;
   gap: 0.35rem;
   padding: 0.4rem 0.85rem;
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #ffffff;
   background-color: var(--brand-primary);
@@ -584,12 +584,12 @@
   padding-bottom: 10px;
 }
 .adminTitle {
-  font-size: 34px;
+  font-size: 68px;
   font-weight: 400;
   letter-spacing: -1.5px;
 }
 .adminSubtitle {
-  font-size: 14px;
+  font-size: 28px;
   line-height: 1.8;
 }
 .metricCard {
@@ -597,24 +597,24 @@
   box-shadow: none;
 }
 .metricValue {
-  font-size: 30px;
+  font-size: 60px;
   font-weight: 400;
 }
 .metricLabel {
   font-weight: 400;
-  font-size: 12px;
+  font-size: 24px;
 }
 .tableCard {
   border-radius: 14px;
   box-shadow: none;
 }
 .cardTitle {
-  font-size: 20px;
+  font-size: 40px;
   font-weight: 500;
 }
 @media (max-width: 700px) {
   .adminTitle {
-    font-size: 28px;
+    font-size: 56px;
   }
 }
 
@@ -627,5 +627,5 @@
  .dataTable thead { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
  .dataTable tr { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); padding:1rem; border-bottom:1px solid var(--border-subtle); }
  .dataTable td { display:flex; flex-direction:column; gap:.4rem; border:0; }
- .dataTable td::before { content:attr(data-label); font-size:.7rem; color:var(--text-muted); }
+ .dataTable td::before { content:attr(data-label); font-size:1.4rem; color:var(--text-muted); }
 }

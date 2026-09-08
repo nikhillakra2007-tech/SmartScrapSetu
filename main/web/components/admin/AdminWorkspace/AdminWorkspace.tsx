@@ -202,7 +202,7 @@ export default function AdminWorkspace() {
         />
         <span
           style={{
-            fontSize: "0.9rem",
+            fontSize: "1.8rem",
             color: "var(--text-secondary, #52606D)",
             fontWeight: 600,
           }}
@@ -256,7 +256,7 @@ export default function AdminWorkspace() {
 
           <h1
             style={{
-              fontSize: "1.4rem",
+              fontSize: "2.8rem",
               fontWeight: 800,
               color: "var(--text-primary)",
               marginBottom: "0.75rem",
@@ -267,7 +267,7 @@ export default function AdminWorkspace() {
 
           <p
             style={{
-              fontSize: "0.925rem",
+              fontSize: "1.85rem",
               color: "var(--text-secondary)",
               lineHeight: 1.6,
               marginBottom: "2rem",
@@ -296,7 +296,7 @@ export default function AdminWorkspace() {
               color: "#FFFFFF",
               borderRadius: 12,
               fontWeight: 700,
-              fontSize: "0.9rem",
+              fontSize: "1.8rem",
               textDecoration: "none",
             }}
           >
@@ -388,7 +388,7 @@ export default function AdminWorkspace() {
               backgroundColor: "var(--brand-tint)",
               border: "1px solid var(--brand-soft)",
               color: "var(--brand-primary)",
-              fontSize: "0.875rem",
+              fontSize: "1.75rem",
               fontWeight: 700,
               display: "flex",
               alignItems: "center",

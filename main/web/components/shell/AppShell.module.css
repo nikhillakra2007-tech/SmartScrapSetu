@@ -52,4 +52,4 @@
   }
 }
 
-@media(min-width:1700px){.contentContainer{max-width:1900px;width:90%;padding-inline:3%;font-size:clamp(16px,.85vw,22px);}}
+@media(min-width:1700px){.contentContainer{max-width:1900px;width:90%;padding-inline:3%;font-size:clamp(32px,1.7vw,44px);}}

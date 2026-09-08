@@ -26,18 +26,18 @@
 /* Sizes */
 .sm {
   padding: 0.35rem 0.65rem;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   border-radius: var(--radius-sm);
 }
 
 .md {
   padding: 0.55rem 1rem;
-  font-size: 0.875rem;
+  font-size: 1.75rem;
 }
 
 .lg {
   padding: 0.75rem 1.35rem;
-  font-size: 1rem;
+  font-size: 2rem;
 }
 
 .fullWidth {

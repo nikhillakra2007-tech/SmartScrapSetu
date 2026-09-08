@@ -11,7 +11,7 @@
 @media(max-width:700px){
  .nav .navCta { display:none; }
  .nav { gap:12px; }
- .nav .brand { font-size:22px; }
+ .nav .brand { font-size:44px; }
  .nav .menuToggle { flex-shrink:0; }
 }
 .site a {
@@ -30,14 +30,14 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  font-size: 25px;
+  font-size: 50px;
   font-weight: 600;
   letter-spacing: -1.3px;
   color: var(--pine);
   justify-self: start;
 }
 .brand > span {
-  font-size: 12px;
+  font-size: 24px;
   align-self: flex-start;
   margin-top: 6px;
   letter-spacing: 0;
@@ -48,7 +48,7 @@
   justify-self: center;
 }
 .links a {
-  font-size: 14px;
+  font-size: 28px;
   color: #3b5147;
   transition: color 0.2s;
 }
@@ -63,7 +63,7 @@
   display: flex;
   align-items: center;
   gap: 25px;
-  font-size: 14px;
+  font-size: 28px;
 }
 .navActions {
   display: flex;
@@ -110,7 +110,7 @@
   max-width: 690px;
 }
 .eyebrow {
-  font-size: 12px;
+  font-size: 24px;
   letter-spacing: 2px;
   display: flex;
   align-items: center;
@@ -127,7 +127,7 @@
 .hero h1 {
   font-family: var(--font-display);
   color: inherit;
-  font-size: clamp(60px, 6.5vw, 98px);
+  font-size: clamp(90px, 13vw, 147px);
   font-weight: 400;
   line-height: 1.025;
   letter-spacing: -5px;
@@ -143,7 +143,7 @@
   letter-spacing: -4px;
 }
 .heroCopy > p {
-  font-size: 16px;
+  font-size: 32px;
   color: #c0d0c5;
   max-width: 370px;
   line-height: 1.8;
@@ -159,7 +159,7 @@
   border-radius: 40px;
   background: var(--lime);
   color: #183727;
-  font-size: 14px;
+  font-size: 28px;
   font-weight: 600;
   transition:
     transform 0.3s,
@@ -175,7 +175,7 @@
   gap: 12px;
   align-items: center;
   color: #d1dccf;
-  font-size: 13px;
+  font-size: 26px;
   margin-top: 22px;
   width: max-content;
 }
@@ -190,7 +190,7 @@
   justify-content: space-between;
   padding: 23px 0;
   color: #bccbc0;
-  font-size: 12px;
+  font-size: 24px;
 }
 .heroBottom span,
 .heroBottom a {
@@ -200,7 +200,7 @@
   color: inherit;
 }
 .heroBottom > span:last-child {
-  font-size: 10px;
+  font-size: 20px;
   letter-spacing: 1.5px;
 }
 .artCaption {
@@ -210,11 +210,11 @@
   display: flex;
   flex-direction: column;
   gap: 7px;
-  font-size: 12px;
+  font-size: 24px;
   color: #c9d8bd;
 }
 .artCaption span:first-child {
-  font-size: 10px;
+  font-size: 20px;
   letter-spacing: 2px;
 }
 .trustStrip {
@@ -224,7 +224,7 @@
   gap: 35px;
   padding: 34px 7%;
   border-bottom: 1px solid #dce1d5;
-  font-size: 14px;
+  font-size: 28px;
   color: #627063;
 }
 .trustStrip > span:not(:first-child) {
@@ -246,7 +246,7 @@
   padding: 105px 7%;
 }
 .label {
-  font-size: 11px;
+  font-size: 22px;
   letter-spacing: 1.8px;
   font-weight: 500;
   display: block;
@@ -260,7 +260,7 @@
   align-items: flex-end;
 }
 .site h2 {
-  font-size: clamp(38px, 4vw, 60px);
+  font-size: clamp(76px, 8vw, 90px);
   line-height: 1.1;
   font-weight: 400;
   letter-spacing: -2.5px;
@@ -270,7 +270,7 @@
   color: #819077;
 }
 .sectionHead > p {
-  font-size: 15px;
+  font-size: 30px;
   line-height: 1.8;
   color: #6a7669;
   margin-bottom: 5px;
@@ -289,17 +289,17 @@
 }
 .stepTop > span {
   font-family: Georgia, serif;
-  font-size: 44px;
+  font-size: 88px;
   color: #c4ccbb;
 }
 .steps h3 {
-  font-size: 23px;
+  font-size: 46px;
   font-weight: 500;
   letter-spacing: -0.8px;
   margin-bottom: 14px;
 }
 .steps p {
-  font-size: 15px;
+  font-size: 30px;
   line-height: 1.8;
   color: #687465;
   max-width: 310px;
@@ -334,7 +334,7 @@
   color: #658044;
 }
 .materialIntro > p {
-  font-size: 15px;
+  font-size: 30px;
   color: #61705b;
   line-height: 1.8;
   margin: 25px 0;
@@ -342,14 +342,14 @@
 }
 .textLink {
   color: var(--pine);
-  font-size: 14px;
+  font-size: 28px;
   display: flex;
   align-items: center;
   gap: 22px;
 }
 .sampleNote {
   display: block;
-  font-size: 10px;
+  font-size: 20px;
   letter-spacing: 1.5px;
   color: #718269;
   margin-top: 45px;
@@ -364,7 +364,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 19px;
+  font-size: 38px;
   font-weight: 500;
   margin-bottom: 24px;
 }
@@ -385,21 +385,21 @@
   background: transparent;
   color: var(--pine);
   cursor: pointer;
-  font-size: 14px;
+  font-size: 28px;
   transition:
     background 0.2s,
     border 0.2s;
 }
 .materialChoices button strong {
   margin-left: auto;
-  font-size: 17px;
+  font-size: 34px;
   font-weight: 500;
   white-space: nowrap;
 }
 .materialChoices small {
   font-weight: 400;
   color: #687662;
-  font-size: 12px;
+  font-size: 24px;
 }
 .materialChoices .materialActive {
   background: #edf3db;
@@ -412,7 +412,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
-  font-size: 12px;
+  font-size: 24px;
   color: #687662;
 }
 .weightInput {
@@ -427,19 +427,19 @@
   padding: 5px 0;
   background: transparent;
   border: 0;
-  font-size: 28px;
+  font-size: 56px;
   color: var(--pine);
   outline-offset: 2px;
 }
 .estimate output {
   display: block;
-  font-size: 37px;
+  font-size: 74px;
   line-height: 1.5;
   color: var(--pine);
   letter-spacing: -1.5px;
 }
 .disclaimer {
-  font-size: 11px;
+  font-size: 22px;
   line-height: 1.6;
   color: #75816c;
   margin-top: 18px;
@@ -477,7 +477,7 @@
   left: 27px;
   right: 27px;
   color: #eef3e7;
-  font-size: 10px;
+  font-size: 20px;
   letter-spacing: 1.5px;
   z-index: 1;
 }
@@ -485,7 +485,7 @@
   color: #718851;
 }
 .purposeCopy > p {
-  font-size: 15px;
+  font-size: 30px;
   line-height: 1.85;
   color: #687465;
   margin-top: 24px;
@@ -507,7 +507,7 @@
   padding-bottom: 115px;
 }
 .faq h2 {
-  font-size: 43px;
+  font-size: 86px;
 }
 .faqItem {
   border-bottom: 1px solid #d8dfcf;
@@ -523,10 +523,10 @@
   text-align: left;
   width: 100%;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 32px;
 }
 .faqItem p {
-  font-size: 14px;
+  font-size: 28px;
   color: #697563;
   line-height: 1.8;
   padding: 0 30px 23px 0;
@@ -543,7 +543,7 @@
 }
 .closing h2 {
   color: #f2f4e9;
-  font-size: clamp(44px, 5.5vw, 78px);
+  font-size: clamp(88px, 11vw, 117px);
   position: relative;
   z-index: 1;
 }
@@ -567,7 +567,7 @@
   align-items: center;
   gap: 25px;
   padding: 38px 5%;
-  font-size: 12px;
+  font-size: 24px;
   color: #6e7c67;
 }
 .footer a {
@@ -635,7 +635,7 @@
     gap: 18px;
   }
   .hero h1 {
-    font-size: 74px;
+    font-size: 111px;
   }
   .heroArt {
     left: 20%;
@@ -650,7 +650,7 @@
   .trustStrip {
     gap: 20px;
     padding: 30px 5%;
-    font-size: 12px;
+    font-size: 24px;
   }
   .steps {
     gap: 30px;
@@ -682,12 +682,12 @@
     margin-left: auto;
   }
   .brand {
-    font-size: 23px;
+    font-size: 46px;
   }
   .navCta {
     margin-left: auto;
     padding: 9px 13px;
-    font-size: 12px;
+    font-size: 24px;
     gap: 12px;
   }
   .menuToggle {
@@ -718,7 +718,7 @@
     max-width: none;
   }
   .hero h1 {
-    font-size: clamp(54px, 11vw, 78px);
+    font-size: clamp(81px, 22vw, 117px);
     letter-spacing: -3px;
     margin: 24px 0;
   }
@@ -726,12 +726,12 @@
     letter-spacing: -3px;
   }
   .heroCopy > p {
-    font-size: 14px;
+    font-size: 28px;
     max-width: 320px;
     margin-bottom: 22px;
   }
   .eyebrow {
-    font-size: 9px;
+    font-size: 18px;
     letter-spacing: 1.5px;
   }
   .heroArt {
@@ -747,10 +747,10 @@
   .artCaption {
     bottom: 100px;
     right: 8%;
-    font-size: 10px;
+    font-size: 20px;
   }
   .heroBottom {
-    font-size: 10px;
+    font-size: 20px;
     left: 7%;
     right: 7%;
     gap: 15px;
@@ -763,10 +763,10 @@
     grid-template-columns: 1fr 1fr;
     padding: 28px 7%;
     gap: 25px;
-    font-size: 12px;
+    font-size: 24px;
   }
   .trustStrip > span:first-child {
-    font-size: 12px;
+    font-size: 24px;
   }
   .process,
   .purpose,
@@ -778,10 +778,10 @@
   }
   .sectionHead > p {
     margin-top: 24px;
-    font-size: 14px;
+    font-size: 28px;
   }
   .site h2 {
-    font-size: 42px;
+    font-size: 84px;
     letter-spacing: -2px;
   }
   .steps {
@@ -794,7 +794,7 @@
   }
   .steps p {
     max-width: 100%;
-    font-size: 14px;
+    font-size: 28px;
   }
   .stepLine {
     margin-top: 20px;
@@ -811,7 +811,7 @@
     margin-top: 25px;
   }
   .materialChoices button {
-    font-size: 12px;
+    font-size: 24px;
     padding: 15px 10px;
     gap: 10px;
   }
@@ -822,7 +822,7 @@
     gap: 20px;
   }
   .estimate output {
-    font-size: 31px;
+    font-size: 62px;
   }
   .purpose {
     grid-template-columns: 1fr;
@@ -840,7 +840,7 @@
     padding-top: 0;
   }
   .faqItem > button {
-    font-size: 14px;
+    font-size: 28px;
   }
   .closing {
     padding: 55px 7%;
@@ -857,10 +857,10 @@
     padding: 30px 7%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    font-size: 10px;
+    font-size: 20px;
   }
   .footer .brand {
-    font-size: 21px;
+    font-size: 42px;
   }
 }
 
@@ -902,7 +902,7 @@
   padding-bottom: 140px;
 }
 .hero h1 {
-  font-size: clamp(58px, 6.2vw, 92px);
+  font-size: clamp(87px, 12.4vw, 138px);
 }
 .manifesto {
   min-height: 510px;
@@ -913,12 +913,12 @@
   justify-content: space-between;
 }
 .manifesto > span {
-  font-size: 10px;
+  font-size: 20px;
   letter-spacing: 2px;
   color: #697d52;
 }
 .manifesto > p {
-  font-size: clamp(45px, 5.5vw, 77px);
+  font-size: clamp(90px, 11vw, 115.5px);
   line-height: 1.03;
   letter-spacing: -3.5px;
   color: #284831;
@@ -936,7 +936,7 @@
   gap: 20px;
 }
 .manifesto > div > span {
-  font-size: 9px;
+  font-size: 18px;
   letter-spacing: 1.5px;
   color: #6a7e53;
 }
@@ -953,7 +953,7 @@
     top: 105px;
   }
   .hero h1 {
-    font-size: 65px;
+    font-size: 97.5px;
     letter-spacing: -3px;
   }
   .heroCopy {
@@ -961,7 +961,7 @@
   }
   .heroCopy > p {
     max-width: 310px;
-    font-size: 14px;
+    font-size: 28px;
   }
 }
 @media (max-width: 700px) {
@@ -973,7 +973,7 @@
     padding: 45px 7% 25px;
   }
   .hero h1 {
-    font-size: clamp(53px, 11.5vw, 78px);
+    font-size: clamp(79.5px, 23vw, 117px);
   }
   .heroFlow {
     position: relative;
@@ -992,35 +992,35 @@
     padding: 30px;
   }
   .manifesto > p {
-    font-size: 65px;
+    font-size: 97.5px;
   }
   .manifesto > div > span {
-    font-size: 8px;
+    font-size: 16px;
   }
 }
 
-@media (max-width:700px) { .hero h1 { font-size:clamp(42px,11vw,78px); } }
+@media (max-width:700px) { .hero h1 { font-size:clamp(84px,22vw,117px); } }
 /* Viewport-sized opening: navigation and hero form one screen. */
 .hero { min-height: calc(100svh - 64px); display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 5%; padding: 32px 5% 96px; }
 .heroCopy { max-width: none; padding: 0; }
-.hero h1 { font-size: clamp(48px, min(6.2vw, 10svh), 98px); margin: 0 0 24px; }
+.hero h1 { font-size: clamp(96px, min(12.4vw, 20svh), 147px); margin: 0 0 24px; }
 .heroFlow { position: static; width: 100%; max-width: min(540px, 62svh); justify-self: end; margin: 0; padding: 0; }
 .recoveryVisual { margin: 0; background: #e4ebd7; border-radius: 4px; padding: 24px; }
 .recoveryVisual svg { display: block; width: 100%; height: auto; }
-.recoveryVisual figcaption { text-align: center; color: #526e47; font-size: 13px; padding: 0 0 16px; }
+.recoveryVisual figcaption { text-align: center; color: #526e47; font-size: 26px; padding: 0 0 16px; }
 @media (max-width:700px) {
  .hero { min-height: calc(100svh - 74px); grid-template-columns: 1fr; gap: 18px; padding: 28px 7% 72px; }
- .hero h1 { font-size: clamp(39px, min(10.5vw, 6.5svh), 64px); letter-spacing: -2px; margin-bottom: 14px; }
- .heroCopy > p { font-size: 13px; line-height: 1.5; margin-bottom: 16px; }
+ .hero h1 { font-size: clamp(78px, min(21vw, 13svh), 96px); letter-spacing: -2px; margin-bottom: 14px; }
+ .heroCopy > p { font-size: 26px; line-height: 1.5; margin-bottom: 16px; }
  .heroFlow { justify-self: center; max-width: min(340px, 38svh); }
- .hero .limeButton { padding: 12px 18px; font-size: 12px; }
+ .hero .limeButton { padding: 12px 18px; font-size: 24px; }
  .demoLink { margin-top: 12px; }
  .heroBottom { padding: 18px 0; }
 }
 @media (min-width:701px) and (max-height:760px) {
  .hero { padding-top: 20px; padding-bottom: 72px; }
- .hero h1 { font-size: clamp(42px, 8svh, 62px); margin-bottom: 16px; letter-spacing: -2.5px; }
- .heroCopy > p { font-size: 14px; line-height: 1.6; margin-bottom: 18px; }
+ .hero h1 { font-size: clamp(84px, 16svh, 93px); margin-bottom: 16px; letter-spacing: -2.5px; }
+ .heroCopy > p { font-size: 28px; line-height: 1.6; margin-bottom: 18px; }
  .heroFlow { max-width: min(480px, 52svh); }
  .hero .limeButton { padding: 13px 20px; }
  .hero .demoLink { margin-top: 14px; }
@@ -1029,23 +1029,23 @@
 .hero { min-height: calc(100svh - 160px); grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); column-gap: clamp(32px, 4vw, 64px); padding: 24px max(5%, calc((100% - 1240px) / 2)) 70px; }
 .heroCopy { width: 100%; }
 .heroFlow { justify-self: center; max-width: min(480px, 47svh); }
-.hero h1 { font-size: clamp(46px, min(5.3vw, 8.5svh), 82px); letter-spacing: -3px; }
+.hero h1 { font-size: clamp(92px, min(10.6vw, 17svh), 123px); letter-spacing: -3px; }
 .heroCopy > p { max-width: 410px; }
-.trustStrip { height: 96px; padding: 18px max(5%, calc((100% - 1240px) / 2)); gap: 24px; font-size: 12px; }
+.trustStrip { height: 96px; padding: 18px max(5%, calc((100% - 1240px) / 2)); gap: 24px; font-size: 24px; }
 .heroBottom { left: max(5%, calc((100% - 1240px) / 2)); right: max(5%, calc((100% - 1240px) / 2)); padding: 18px 0; }
 @media (min-width:701px) and (max-height:760px) {
- .hero h1 { font-size: clamp(38px, 7.5svh, 56px); margin-bottom: 14px; }
+ .hero h1 { font-size: clamp(76px, 15svh, 84px); margin-bottom: 14px; }
  .heroFlow { max-width: min(390px, 41svh); }
  .hero { padding-top: 18px; padding-bottom: 64px; }
- .heroCopy > p { font-size: 13px; line-height: 1.5; margin-bottom: 14px; }
+ .heroCopy > p { font-size: 26px; line-height: 1.5; margin-bottom: 14px; }
  .hero .demoLink { margin-top: 10px; }
 }
 @media(max-width:700px) {
  .hero { grid-template-columns: 1fr; min-height: calc(100svh - 170px); gap: 16px; padding: 22px 7% 64px; }
- .hero h1 { font-size: clamp(35px, min(10vw, 5.6svh), 60px); letter-spacing: -2px; }
+ .hero h1 { font-size: clamp(70px, min(20vw, 11.2svh), 90px); letter-spacing: -2px; }
  .heroFlow { max-width: min(310px, 28svh); }
- .trustStrip { height: auto; min-height: 96px; padding: 18px 7%; gap: 14px; font-size: 10px; }
- .trustStrip > span:first-child { font-size: 10px; }
+ .trustStrip { height: auto; min-height: 96px; padding: 18px 7%; gap: 14px; font-size: 20px; }
+ .trustStrip > span:first-child { font-size: 20px; }
  .trustStrip svg { width: 16px; flex-shrink: 0; }
 }
 @media(min-width:701px) {
@@ -1057,17 +1057,17 @@
 /* Grow the composition together on desktop monitors; retain laptop proportions. */
 @media (min-width: 1700px) {
  .hero { padding-inline: 9%; column-gap: 6vw; grid-template-columns: 1.15fr 1fr; padding-top: 3vh; }
- .nav .brand { font-size:clamp(25px,1.3vw,36px); }
- .nav .links a, .nav .navCta { font-size:clamp(16px,.9vw,23px); }
+ .nav .brand { font-size:clamp(50px,2.6vw,72px); }
+ .nav .links a, .nav .navCta { font-size:clamp(32px,1.8vw,46px); }
  .heroCopy { max-width: none; justify-self: stretch; }
- .hero h1 { font-size: clamp(82px, 5.1vw, 150px); letter-spacing: -.055em; }
- .heroCopy > p { font-size: clamp(17px, 1.05vw, 28px); max-width: 31em; }
+ .hero h1 { font-size: clamp(123px, 10.2vw, 160px); letter-spacing: -.055em; }
+ .heroCopy > p { font-size: clamp(34px, 2.1vw, 56px); max-width: 31em; }
  .heroFlow { max-width: min(34vw, 57svh); width: 100%; justify-self: center; }
- .hero .limeButton { font-size: clamp(16px, .95vw, 25px); padding: 1em 1.5em; }
- .hero .demoLink { font-size: clamp(15px, .9vw, 23px); }
- .heroBottom { left: 9%; right: 9%; font-size: clamp(12px, .7vw, 19px); }
- .trustStrip { padding-inline: 9%; font-size: clamp(13px, .8vw, 21px); }
- .purposeCopy h2, .materialIntro h2, .sectionHead h2 { font-size: clamp(60px, 3.6vw, 100px); }
- .purposeCopy p, .materialIntro p { font-size: clamp(17px, 1vw, 26px); max-width: 32em; }
+ .hero .limeButton { font-size: clamp(32px, 1.9vw, 50px); padding: 1em 1.5em; }
+ .hero .demoLink { font-size: clamp(30px, 1.8vw, 46px); }
+ .heroBottom { left: 9%; right: 9%; font-size: clamp(24px, 1.4vw, 38px); }
+ .trustStrip { padding-inline: 9%; font-size: clamp(26px, 1.6vw, 42px); }
+ .purposeCopy h2, .materialIntro h2, .sectionHead h2 { font-size: clamp(90px, 7.2vw, 150px); }
+ .purposeCopy p, .materialIntro p { font-size: clamp(34px, 2vw, 52px); max-width: 32em; }
  .purpose, .materialSection, .process { padding-inline: 9%; }
 }
