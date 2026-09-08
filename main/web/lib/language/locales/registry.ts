@@ -89,7 +89,7 @@ export const INDIAN_LANGUAGES: LanguageMeta[] = [
     code: 'ur',
     name: 'Urdu',
     nativeName: 'اردو',
-    direction: 'rtl',
+    direction: 'ltr',
     searchTerms: 'urdu ordoo اردو',
   },
   {
@@ -117,7 +117,7 @@ export const INDIAN_LANGUAGES: LanguageMeta[] = [
     code: 'sd',
     name: 'Sindhi',
     nativeName: 'سنڌي',
-    direction: 'rtl',
+    direction: 'ltr',
     searchTerms: 'sindhi sindh سنڌي सिंधी',
   },
   {
@@ -129,4 +129,4 @@ export const INDIAN_LANGUAGES: LanguageMeta[] = [
   },
 ];
 
-export const RTL_LOCALES: LocaleCode[] = ['ur', 'sd'];
+export const RTL_LOCALES: LocaleCode[] = [];

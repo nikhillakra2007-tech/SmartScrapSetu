@@ -52,34 +52,28 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const isRtl = RTL_LOCALES.includes(locale);
+  const isRtl = false;
 
   // Synchronize document dir and lang attributes
   useEffect(() => {
     document.documentElement.lang = locale;
-    document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
+    document.documentElement.dir = 'ltr';
     if (typeof document !== 'undefined' && document.body) {
-      document.body.dir = isRtl ? 'rtl' : 'ltr';
-      if (isRtl) {
-        document.documentElement.classList.add('rtl-mode');
-        document.body.classList.add('rtl-mode');
-      } else {
-        document.documentElement.classList.remove('rtl-mode');
-        document.body.classList.remove('rtl-mode');
-      }
+      document.body.dir = 'ltr';
+      document.documentElement.classList.remove('rtl-mode');
+      document.body.classList.remove('rtl-mode');
     }
-  }, [locale, isRtl]);
+  }, [locale]);
 
   const t = (keyOrText: string) => {
     return translateKey(keyOrText, locale);
   };
 
   return (
-    <LanguageContext.Provider value={{ locale, setLocale, t, isRtl }}>
+    <LanguageContext.Provider value={{ locale, setLocale, t, isRtl: false }}>
       <div
         id="scrapsetu-app-root"
-        dir={isRtl ? 'rtl' : 'ltr'}
-        className={isRtl ? 'rtl-layout rtl-mode' : 'ltr-layout'}
+        dir="ltr"
         style={{ width: '100%', minHeight: '100%' }}
       >
         {children}
@@ -186,7 +180,7 @@ export function LanguageSwitcher() {
                 key={item.code}
                 type="button"
                 lang={item.code}
-                dir={item.direction}
+                dir="ltr"
                 aria-pressed={locale === item.code}
                 className={`${styles.langOption} ${locale === item.code ? styles.langOptionActive : ''}`}
                 onClick={() => {
