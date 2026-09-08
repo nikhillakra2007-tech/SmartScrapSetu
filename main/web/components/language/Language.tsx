@@ -158,7 +158,12 @@ export function LanguageSwitcher() {
             />
           </div>
 
-          <div role="group" aria-label="Languages" className={styles.langList}>
+          <div
+            role="group"
+            aria-label="Languages"
+            className={styles.langList}
+            onWheel={(e) => e.stopPropagation()}
+          >
             {filtered.map((item) => (
               <button
                 key={item.code}

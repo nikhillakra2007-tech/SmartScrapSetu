@@ -43,15 +43,16 @@
   right: 0;
   top: calc(100% + 8px);
   z-index: 1000;
-  width: min(300px, 90vw);
+  width: min(320px, 92vw);
   background: #ffffff;
   border: 1px solid #dce5e0;
   border-radius: 14px;
-  box-shadow: 0 16px 40px rgba(11, 18, 32, 0.14);
+  box-shadow: 0 16px 40px rgba(11, 18, 32, 0.16);
   padding: 10px;
-  max-height: 380px;
+  max-height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 [dir="rtl"] .panel {
@@ -62,6 +63,7 @@
 .searchWrap {
   position: relative;
   margin-bottom: 8px;
+  flex-shrink: 0;
 }
 
 .searchIcon {
@@ -100,12 +102,43 @@
 }
 
 .langList {
-  overflow-y: auto;
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: 280px;
+  height: auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  max-height: 280px;
-  padding-right: 4px;
+  gap: 3px;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: #10b981 #eef2ed;
+}
+
+[dir="rtl"] .langList {
+  padding-right: 0;
+  padding-left: 6px;
+}
+
+.langList::-webkit-scrollbar {
+  width: 6px;
+  display: block;
+}
+
+.langList::-webkit-scrollbar-track {
+  background: #f1f5f0;
+  border-radius: 6px;
+}
+
+.langList::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 6px;
+}
+
+.langList::-webkit-scrollbar-thumb:hover {
+  background: #059669;
 }
 
 .langOption {
