@@ -95,7 +95,7 @@ export default function MatchedLotsQueue({
                 {/* Hazard Warning Tags */}
                 <T>{lot.hazard_flags.length > 0 && (
                   <div className={styles.hazardRow}>
-                    <T>{lot.hazard_flags.map((flag) => (
+                    <T>{lot.hazard_flags.map((flag: string) => (
                       <span key={flag} className={styles.hazardBadge}>
                         <Flame size={12} />
                         <span><T>{flag.replace(/_/g, ' ')}</T></span>
