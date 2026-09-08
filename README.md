@@ -169,7 +169,7 @@ sequenceDiagram
 ### Privacy & Data Minimization Guarantees
 * **No Raw Aadhaar Storage**: 12-digit Aadhaar numbers and OTPs are **never saved, written to disk, or logged**.
 * **Synthetic Reference Tokens**: Only synthetic verification reference IDs (e.g., `SETU-UID-794218-OKHLA`) and masked previews (`XXXX-XXXX-9842`) are retained.
-* **Provider Abstraction**: Decoupled design with an extensible interface (`AadhaarProviderInterface`). Switch effortlessly between `MockAadhaarProvider` (for testing/demos) and `ProductionAadhaarProvider` (for live UIDAI / GSTN / Digilocker gateways) via the `AADHAAR_PROVIDER` environment variable.
+* **Provider Abstraction**: Decoupled design with an extensible interface (`AadhaarProviderInterface`). Switch effortlessly between `MockAadhaarProvider` (zero-configuration out-of-the-box demo mode) and `ProductionAadhaarProvider` (for live UIDAI / GSTN / Digilocker production gateways).
 * **Modular Fallback**: Google OAuth is preserved inside a collapsible drawer for secondary access.
 
 ---
@@ -231,47 +231,54 @@ SmartScrapSetu classifies urban scrap into 8 CPCB-standardized streams:
 
 ```text
 smart-scrap-v2/
-├── app/                                 # Next.js 16 App Router Directory
-│   ├── api/auth/aadhaar/                # Secure server-side Aadhaar endpoints
-│   │   ├── start/route.ts               # Consent validation & verification session initiation
-│   │   ├── verify-otp/route.ts          # OTP verification, cookie set, and workspace routing
-│   │   ├── status/[id]/route.ts         # Sanitized polling endpoint
-│   │   └── callback/route.ts            # Webhook callback receiver
-│   ├── auth/page.tsx                    # Identity verification gateway & role selection
-│   ├── citizen/page.tsx                 # Citizen portal entrypoint
-│   ├── collector/page.tsx               # Collector portal entrypoint
-│   ├── recycler/page.tsx                # Recycler hub entrypoint
-│   ├── globals.css                      # Master design tokens (70/20/10 palette), Indic fonts
+├── app/                                 # Next.js 16 App Router and global presentation
+│   ├── admin/                           # Governance & CPCB compliance portal
+│   ├── api/auth/aadhaar/                # Aadhaar identity verification endpoints (start, verify-otp, status)
+│   ├── auth/                            # Identity verification gateway & role selection
+│   ├── citizen/                         # Citizen doorstep pickup booking & price estimator
+│   ├── collector/                       # Informal collector portal (scanner, pickups, earnings)
+│   ├── recycler/                        # Recycler intake hub, rate cards, and matching queue
+│   ├── globals.css                      # Master design tokens & Indic typography fallbacks
 │   └── layout.tsx                       # Root layout wrapping Universal LanguageProvider
-├── components/                          # Modular React 19 UI Components
-│   ├── auth/                            # AadhaarConsentModal, AadhaarVerificationModal, AuthPage
-│   ├── language/                        # Accessible 18-Language switcher, Provider, and T wrapper
-│   ├── shell/                           # Universal TopNav header, notification drawers, user pills
-│   ├── collector/                       # CollectorWorkspace composition and operational metrics
-│   ├── citizen/                         # Citizen pickup request and price estimator UI
-│   ├── recycler/                        # Recycler incoming lots, rate card managers
-│   └── landing/                         # Cinematic intro, circular economy value loop
-├── features/                            # Domain-Specific Feature Modules
-│   ├── collector/                       # AI Scrap Scanner, schedule manager, earnings analytics
-│   ├── customer-pickup/                 # Doorstep collection requests
+├── components/                          # Modular React 19 UI component system
+│   ├── admin/                           # Governance audit consoles & facility metrics
+│   ├── auth/                            # Aadhaar consent modal, OTP verification, and auth cards
+│   ├── citizen/                         # Citizen pickup workflows & instant price calculator
+│   ├── collector/                       # Collector workspace composition & metric cards
+│   ├── landing/                         # Cinematic intro, hero banner, and circular economy loop
+│   ├── language/                        # Accessible 18-Language switcher, Provider, and T component
+│   ├── material-flow/                   # Interactive circular supply chain diagrams
+│   ├── recycler/                        # Incoming lots feed, facility overview, and rate cards
+│   ├── shell/                           # Shared role-aware navigation header & user pills
+│   └── ui/                              # Reusable accessible interface primitives & badges
+├── features/                            # Domain-specific feature modules
+│   ├── collector/                       # AI Scrap Scanner, schedule management, and earnings
+│   ├── customer-pickup/                 # Doorstep pickup booking workflow
+│   ├── handover/                        # Cryptographic QR code handovers & chain of custody
+│   ├── pickups/                         # Shared citizen/collector request workflows
 │   ├── price-board/                     # Delhi 7-day rolling industrial benchmark price board
 │   ├── recycler/                        # Lot matching algorithm & facility intake queue
-│   ├── handover/                        # Tamper-proof QR code generation & chain of custody
-│   └── safety/                          # Worker safety guides & CPCB e-waste hazard protocols
-├── lib/                                 # Core Services, Providers, and Utilities
-│   ├── auth/aadhaar/                    # Aadhaar provider abstraction (Mock + Production)
+│   └── safety/                          # Worker safety guides & CPCB e-waste hazard SOPs
+├── lib/                                 # Core services, providers, and domain logic
+│   ├── auth/aadhaar/                    # Aadhaar provider abstraction (Mock & Production gateways)
 │   ├── language/locales/                # 18-Language schemas, registry, and regional-dictionary
-│   ├── mock-data.ts                     # Pre-seeded lots, recyclers, and benchmark price points
-│   └── supabase.ts                      # Supabase client singleton
-├── supabase/migrations/                 # Declarative SQL Migrations
-│   ├── 20260908184000_core_schema.sql   # Lots, matches, rate cards, and profile tables
+│   ├── mock-data.ts                     # Pre-seeded lots, recyclers, and benchmark pricing
+│   └── supabase.ts                      # Supabase client singleton & authentication helpers
+├── supabase/migrations/                 # Declarative PostgreSQL schema migrations
+│   ├── 20260908184000_core_schema.sql   # Core tables: lots, lot_matches, rate_cards, transactions
 │   └── 20260909000000_identity_verification.sql # Tokenized identity verification registry & RLS
-├── main/                                # Synchronized Mirror Codebase
-│   ├── api/                             # Python FastAPI / Gemini backend service microservice
-│   └── web/                             # Synced web source package
-├── package.json                         # Dependencies (Next 16, React 19, Lucide, Supabase)
-├── tsconfig.json                        # Strict TypeScript compiler options
-└── vercel.json                          # Vercel Mumbai (bom1) regional deployment config
+├── types/                               # TypeScript domain definitions & Supabase schema types
+│   ├── database.ts                      # Generated Supabase database interface
+│   └── domain.ts                        # Material categories, user roles, lot states, and handover models
+├── scripts/                             # Utility & infrastructure scripts
+│   └── setup-storage-buckets.js         # Automated Supabase storage bucket provisioning
+├── main/                                # Microservice & synchronized web mirror
+│   ├── api/                             # Python FastAPI / Gemini multimodal vision microservice
+│   └── web/                             # Synced web application source package
+├── public/                              # Static media assets, icons, and circular economy video
+├── package.json                         # Next.js 16, React 19, Lucide, Supabase, TypeScript dependencies
+├── tsconfig.json                        # Strict TypeScript compiler configuration
+└── vercel.json                          # Vercel deployment configuration (Mumbai bom1 region)
 ```
 
 ---
@@ -296,14 +303,13 @@ git checkout backend
 # 3. Install dependencies
 npm install
 
-# 4. Set up environment variables
-cp .env.example .env.local
-
-# 5. Launch development server
+# 4. Launch development server
 npm run dev
 ```
 
 Visit **[http://localhost:3000](http://localhost:3000)** in your browser.
+
+The platform runs out of the box with zero setup. Open `/auth` and select any persona or authenticate with Aadhaar demo mode to explore each workspace.
 
 ---
 
@@ -318,32 +324,6 @@ Visit **[http://localhost:3000](http://localhost:3000)** in your browser.
    - Click the **`123456 (Success)`** pill to autofill the valid simulated code.
    - Click **"Submit OTP & Verify"**.
 7. The animated verification spinner executes and you are instantly redirected to your authenticated workspace (`/collector` or `/citizen`).
-
----
-
-## ⚙️ Environment Variables Reference
-
-Create a `.env.local` file in the root directory:
-
-```dotenv
-# Supabase Database & Auth (Optional for Demo Mode)
-NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
-SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
-
-# Aadhaar Verification Provider Configuration
-# Set to 'mock' for local development; 'production' for live UIDAI gateway
-AADHAAR_PROVIDER=mock
-AADHAAR_API_BASE_URL=https://api.gateway.gov.in/aadhaar
-AADHAAR_CLIENT_ID=your-aadhaar-client-id
-AADHAAR_CLIENT_SECRET=your-aadhaar-client-secret
-
-# Google Gemini Vision API (Optional - for real-time photo classification)
-GEMINI_API_KEY=your-gemini-api-key
-
-# Application Base URL
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-```
 
 ---
 
