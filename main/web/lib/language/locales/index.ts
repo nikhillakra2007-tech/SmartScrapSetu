@@ -19,8 +19,11 @@ import { sd } from './sd';
 import { dog } from './dog';
 import { dictionary as legacyDictionary } from '../dictionary';
 
+import { REGIONAL_DICTIONARY } from './regional-dictionary';
+
 export * from './types';
 export * from './registry';
+export * from './regional-dictionary';
 
 export const LOCALES: Record<LocaleCode, TranslationSchema> = {
   en,
@@ -46,8 +49,9 @@ export const LOCALES: Record<LocaleCode, TranslationSchema> = {
 /**
  * Universal translator supporting:
  * 1. Structured dot-notation keys (e.g. 'auth.verifyWithAadhaar')
- * 2. Automatic fallback to English when key is missing in chosen regional language
- * 3. Graceful fallback to legacy dictionary or raw string
+ * 2. Site-wide UI regional dictionary across all 18 languages
+ * 3. Legacy dictionary for Hindi ([0]) and Marathi ([1])
+ * 4. Automatic fallback to English structured keys or raw string
  */
 export function translateKey(key: string, locale: LocaleCode = 'en'): string {
   if (!key) return '';
@@ -60,17 +64,26 @@ export function translateKey(key: string, locale: LocaleCode = 'en'): string {
     return localeDict[normalized];
   }
 
-  // 2. Fallback to English structured keys
+  // 2. Check site-wide UI regional dictionary for the selected locale
+  const regionalDict = REGIONAL_DICTIONARY[locale];
+  if (regionalDict && regionalDict[normalized]) {
+    return regionalDict[normalized];
+  }
+
+  // 3. Check legacy raw string dictionary (Hindi: index 0, Marathi: index 1)
+  if (locale === 'hi' && legacyDictionary[normalized]?.[0]) {
+    return legacyDictionary[normalized][0];
+  }
+  if (locale === 'mr' && legacyDictionary[normalized]?.[1]) {
+    return legacyDictionary[normalized][1];
+  }
+
+  // 4. Fallback to English structured keys
   const enDict = LOCALES['en'] as Record<string, string>;
   if (enDict && enDict[normalized]) {
     return enDict[normalized];
   }
 
-  // 3. Check legacy raw string dictionary (for existing Hindi strings)
-  if (locale === 'hi' && legacyDictionary[normalized]?.[0]) {
-    return legacyDictionary[normalized][0];
-  }
-
-  // 4. Return original raw string
+  // 5. Return original raw string
   return key;
 }

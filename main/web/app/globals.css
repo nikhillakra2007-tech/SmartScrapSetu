@@ -519,19 +519,49 @@ html[lang="sd"] body {
   --font-sans: "Noto Nastaliq Urdu", "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif;
 }
 
-/* RTL Layout Direction Support */
-[dir="rtl"] {
+/* RTL Layout Direction Support (Urdu & Sindhi) */
+[dir="rtl"],
+.rtl-layout,
+.rtl-mode,
+html[dir="rtl"] body {
   direction: rtl;
   text-align: right;
 }
 
 [dir="rtl"] input,
 [dir="rtl"] textarea,
-[dir="rtl"] select {
+[dir="rtl"] select,
+.rtl-layout input,
+.rtl-layout textarea,
+.rtl-layout select,
+.rtl-mode input,
+.rtl-mode textarea,
+.rtl-mode select {
+  direction: rtl;
   text-align: right;
 }
 
-/* Indic Headline letter-spacing normalization */
+/* Reversal of Icons & Direction Indicators */
+[dir="rtl"] .lucide-arrow-right,
+.rtl-layout .lucide-arrow-right,
+.rtl-mode .lucide-arrow-right {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .lucide-chevron-right,
+.rtl-layout .lucide-chevron-right,
+.rtl-mode .lucide-chevron-right {
+  transform: scaleX(-1);
+}
+
+/* Ensure flex rows and columns respect RTL */
+[dir="rtl"] header,
+.rtl-layout header,
+.rtl-mode header {
+  direction: rtl;
+}
+
+/* Indic & Perso-Arabic Headline letter-spacing normalization */
 html:not([lang="en"]) h1,
 html:not([lang="en"]) h2,
 html:not([lang="en"]) h3,
@@ -539,5 +569,5 @@ html:not([lang="en"]) em,
 html:not([lang="en"]) button {
   letter-spacing: normal !important;
   font-style: normal;
-  line-height: 1.3;
+  line-height: 1.35;
 }

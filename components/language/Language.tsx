@@ -58,6 +58,16 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     document.documentElement.lang = locale;
     document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
+    if (typeof document !== 'undefined' && document.body) {
+      document.body.dir = isRtl ? 'rtl' : 'ltr';
+      if (isRtl) {
+        document.documentElement.classList.add('rtl-mode');
+        document.body.classList.add('rtl-mode');
+      } else {
+        document.documentElement.classList.remove('rtl-mode');
+        document.body.classList.remove('rtl-mode');
+      }
+    }
   }, [locale, isRtl]);
 
   const t = (keyOrText: string) => {
@@ -66,7 +76,14 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <LanguageContext.Provider value={{ locale, setLocale, t, isRtl }}>
-      {children}
+      <div
+        id="scrapsetu-app-root"
+        dir={isRtl ? 'rtl' : 'ltr'}
+        className={isRtl ? 'rtl-layout rtl-mode' : 'ltr-layout'}
+        style={{ width: '100%', minHeight: '100%' }}
+      >
+        {children}
+      </div>
     </LanguageContext.Provider>
   );
 }
