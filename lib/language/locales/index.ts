@@ -59,7 +59,7 @@ export function translateKey(key: string, locale: LocaleCode = 'en'): string {
   const normalized = key.trim();
 
   // 1. Check structured keys in selected locale
-  const localeDict = LOCALES[locale] as Record<string, string> | undefined;
+  const localeDict = LOCALES[locale] as unknown as Record<string, string> | undefined;
   if (localeDict && localeDict[normalized]) {
     return localeDict[normalized];
   }
@@ -79,7 +79,7 @@ export function translateKey(key: string, locale: LocaleCode = 'en'): string {
   }
 
   // 4. Fallback to English structured keys
-  const enDict = LOCALES['en'] as Record<string, string>;
+  const enDict = LOCALES['en'] as unknown as Record<string, string>;
   if (enDict && enDict[normalized]) {
     return enDict[normalized];
   }

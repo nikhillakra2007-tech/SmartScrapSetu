@@ -1743,10 +1743,6 @@ export const dictionary:Record<string,[string,string]> = {
     "मेरी कमाई",
     ""
   ],
-  "AI Scrap Scanner": [
-    "एआई कबाड़ स्कैनर",
-    ""
-  ],
   "Plastic": [
     "प्लास्टिक",
     ""
@@ -1847,10 +1843,6 @@ export const dictionary:Record<string,[string,string]> = {
     "स्वीकार करें",
     ""
   ],
-  "Cancel": [
-    "रद्द करें",
-    ""
-  ],
   "Start Pickup": [
     "पिकअप शुरू करें",
     ""
@@ -1943,72 +1935,12 @@ export const dictionary:Record<string,[string,string]> = {
     "पिछले महीने से कम",
     ""
   ],
-  "Collection Schedule": [
-    "कलेक्शन शेड्यूल",
-    ""
-  ],
-  "My Earnings": [
-    "मेरी कमाई",
-    ""
-  ],
-  "Plastic": [
-    "प्लास्टिक",
-    ""
-  ],
-  "Glass": [
-    "कांच",
-    ""
-  ],
-  "Paper & Cardboard": [
-    "कागज और गत्ता",
-    ""
-  ],
-  "Metal — Ferrous": [
-    "धातु — लौह (लोहा/स्टील)",
-    ""
-  ],
-  "Metal — Ferrous (Iron & Steel)": [
-    "धातु — लौह (लोहा व स्टील)",
-    ""
-  ],
-  "Metal — Non-Ferrous": [
-    "धातु — अलौह (तांबा/पीतल/अल्युमिनियम)",
-    ""
-  ],
-  "Metal — Non-Ferrous (Copper, Brass, Aluminium)": [
-    "धातु — अलौह (तांबा, पीतल, एल्युमिनियम)",
-    ""
-  ],
-  "E-Waste": [
-    "ई-कचरा",
-    ""
-  ],
-  "Textile / Cloth": [
-    "कपड़ा / वस्त्र",
-    ""
-  ],
-  "Rubber & Other": [
-    "रबर व अन्य",
-    ""
-  ],
-  "Material": [
-    "सामग्री",
-    ""
-  ],
   "Select Material Category": [
     "सामग्री श्रेणी चुनें",
     ""
   ],
   "Select E-Waste Category": [
     "सामग्री श्रेणी चुनें",
-    ""
-  ],
-  "THIS MONTH'S EARNINGS": [
-    "इस महीने की कमाई",
-    ""
-  ],
-  "This Month's Earnings": [
-    "इस महीने की कमाई",
     ""
   ],
   "TOTAL WEIGHT": [

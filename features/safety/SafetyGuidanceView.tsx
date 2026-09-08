@@ -12,20 +12,24 @@ import {
 } from 'lucide-react';
 import styles from './Safety.module.css';
 
-type Language = 'en' | 'hi';
+type Language = string;
 
 interface SafetyGuide {
   id: string;
-  category: Record<Language, string>;
-  hazard: Record<Language, string>;
-  doNot: Record<Language, string>;
-  doThis: Record<Language, string>;
-  ppe: Record<Language, string>;
+  category: Record<string, string>;
+  hazard: Record<string, string>;
+  doNot: Record<string, string>;
+  doThis: Record<string, string>;
+  ppe: Record<string, string>;
   colorVar: string;
 }
 
 export default function SafetyGuidanceView() {
-  const {locale:selectedLang,setLocale:setSelectedLang}=useLocale();
+  const { locale: selectedLang, setLocale: setSelectedLang } = useLocale();
+
+  const getTxt = (map: Record<string, string>): string => {
+    return map[selectedLang] || (selectedLang === 'hi' || selectedLang === 'mr' ? map[selectedLang] : undefined) || map['hi'] || map['en'] || '';
+  };
 
   const UI_TEXT = {
     title: {
@@ -189,9 +193,9 @@ export default function SafetyGuidanceView() {
       {/* Page Header */}
       <div className={styles.pageHeader}>
         <div>
-          <h2 className={styles.pageTitle}><T>{UI_TEXT.title[selectedLang]}</T></h2>
+          <h2 className={styles.pageTitle}><T>{getTxt(UI_TEXT.title)}</T></h2>
           <p className={styles.pageSubtitle}>
-            <T>{UI_TEXT.subtitle[selectedLang]}</T>
+            <T>{getTxt(UI_TEXT.subtitle)}</T>
           </p>
         </div>
 
@@ -222,10 +226,10 @@ export default function SafetyGuidanceView() {
         <div className={styles.emergencyTextContent}>
           <h4 className={styles.emergencyTitle}>
             <PhoneCall size={14} style={{ display: 'inline', marginRight: 6 }} />
-            <T>{UI_TEXT.emergencyTitle[selectedLang]}</T>
+            <T>{getTxt(UI_TEXT.emergencyTitle)}</T>
           </h4>
           <p className={styles.emergencyDesc}>
-            <T>{UI_TEXT.emergencyText[selectedLang]}</T>
+            <T>{getTxt(UI_TEXT.emergencyText)}</T>
           </p>
         </div>
       </div>
@@ -241,12 +245,12 @@ export default function SafetyGuidanceView() {
               <div className={styles.hazardHeader}>
                 <Flame size={18} className={styles[`icon-${item.colorVar}`]} />
                 <span className={`${styles.hazardText} ${styles[`text-${item.colorVar}`]}`}>
-                  <T>{item.hazard[selectedLang]}</T>
+                  <T>{getTxt(item.hazard)}</T>
                 </span>
               </div>
 
               <h3 className={styles.categoryTitle}>
-                <T>{item.category[selectedLang]}</T>
+                <T>{getTxt(item.category)}</T>
               </h3>
 
               {/* Prohibited Action Box */}
@@ -254,9 +258,9 @@ export default function SafetyGuidanceView() {
                 <XCircle size={16} className={styles.doNotIcon} />
                 <div>
                   <strong className={styles.doNotTitle}>
-                    <T>{UI_TEXT.doNotLabel[selectedLang]}</T>
+                    <T>{getTxt(UI_TEXT.doNotLabel)}</T>
                   </strong><T>{' '}</T>
-                  <span className={styles.doNotText}><T>{item.doNot[selectedLang]}</T></span>
+                  <span className={styles.doNotText}><T>{getTxt(item.doNot)}</T></span>
                 </div>
               </div>
 
@@ -265,16 +269,16 @@ export default function SafetyGuidanceView() {
                 <CheckCircle2 size={16} className={styles.doThisIcon} />
                 <div>
                   <strong className={styles.doThisTitle}>
-                    <T>{UI_TEXT.doThisLabel[selectedLang]}</T>
+                    <T>{getTxt(UI_TEXT.doThisLabel)}</T>
                   </strong><T>{' '}</T>
-                  <span className={styles.doThisText}><T>{item.doThis[selectedLang]}</T></span>
+                  <span className={styles.doThisText}><T>{getTxt(item.doThis)}</T></span>
                 </div>
               </div>
 
               {/* PPE Gear Box */}
               <div className={styles.ppeBox}>
-                <span className={styles.ppeLabel}><T>{UI_TEXT.ppeLabel[selectedLang]}</T></span>
-                <span className={styles.ppeValue}><T>{item.ppe[selectedLang]}</T></span>
+                <span className={styles.ppeLabel}><T>{getTxt(UI_TEXT.ppeLabel)}</T></span>
+                <span className={styles.ppeValue}><T>{getTxt(item.ppe)}</T></span>
               </div>
             </div>
           </div>
