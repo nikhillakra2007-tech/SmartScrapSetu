@@ -11,7 +11,14 @@ import {
   MOCK_MATCHED_LOTS,
   MOCK_PICKUP_REQUESTS,
   CURRENT_RECYCLER,
+  MOCK_PRICE_BOARD, 
+  MOCK_SAFETY_GUIDES
 } from "@/lib/mock-data";
+import CollectionSchedule from '@/features/collector/CollectionSchedule';
+import EarningsAnalytics from '@/features/collector/EarningsAnalytics';
+import { INITIAL_MOCK_PICKUPS, INITIAL_MOCK_TRANSACTIONS } from '@/lib/collector-mock-data';
+import { CollectorPickup, Transaction, PickupStatus } from '@/lib/collector-types';
+import { MOCK_COLLECTOR_ID } from '@/lib/collector-service';
 import { LotMatch } from "@/types/database";
 import {
   Package,
@@ -40,39 +47,60 @@ interface MaterialOption {
 
 const MATERIAL_OPTIONS: MaterialOption[] = [
   {
-    id: "pcb",
-    name: "Printed Circuit Boards (PCB)",
-    code: "mobile_pcb",
-    ratePerKg: 450,
-    category: "PCB",
+    id: "plastic",
+    name: "Plastic (PET / HDPE)",
+    code: "mixed_plastic",
+    ratePerKg: 28,
+    category: "PLASTIC",
   },
   {
-    id: "battery",
-    name: "Lithium-Ion Battery Packs",
-    code: "li_ion_mobile_laptop",
-    ratePerKg: 180,
-    category: "BATTERY",
+    id: "glass",
+    name: "Glass Bottles & Cullet",
+    code: "cullet_bottles",
+    ratePerKg: 12,
+    category: "GLASS",
   },
   {
-    id: "copper",
-    name: "Stripped High-Purity Copper",
-    code: "copper_wire",
-    ratePerKg: 385,
-    category: "CABLE_WIRE",
+    id: "paper",
+    name: "Paper & Cardboard (OCC)",
+    code: "corrugated_kraft",
+    ratePerKg: 18,
+    category: "PAPER",
   },
   {
-    id: "crt",
-    name: "CRT Monitor & Leaded Glass",
-    code: "tv_crt",
-    ratePerKg: 95,
-    category: "CRT",
+    id: "metal_ferrous",
+    name: "Metal — Ferrous (Iron & Steel)",
+    code: "heavy_iron_steel",
+    ratePerKg: 38,
+    category: "METAL_FERROUS",
   },
   {
-    id: "server",
-    name: "Enterprise Server Backplanes",
-    code: "server_chassis",
+    id: "metal_nonferrous",
+    name: "Metal — Non-Ferrous (Copper / Brass)",
+    code: "copper_brass_alu",
+    ratePerKg: 420,
+    category: "METAL_NONFERROUS",
+  },
+  {
+    id: "e_waste",
+    name: "E-Waste & Circuit Boards",
+    code: "mixed_ewaste_pcb",
     ratePerKg: 280,
-    category: "PCB",
+    category: "E_WASTE",
+  },
+  {
+    id: "textile",
+    name: "Textile / Cloth Fabrics",
+    code: "cotton_synthetic_scrap",
+    ratePerKg: 16,
+    category: "TEXTILE",
+  },
+  {
+    id: "rubber_other",
+    name: "Rubber & Other (Tyres)",
+    code: "tyre_industrial_rubber",
+    ratePerKg: 22,
+    category: "RUBBER_OTHER",
   },
 ];
 
@@ -87,6 +115,49 @@ export default function CollectorWorkspace() {
   const [isAuthLoading, setIsAuthLoading] = useState<boolean>(true);
   const [activeTab, setActiveTab] = useState<string>("collector-scan");
   const [matchedLots, setMatchedLots] = useState<LotMatch[]>(MOCK_MATCHED_LOTS);
+
+  // PRD States
+  const [pickups, setPickups] = useState<CollectorPickup[]>(INITIAL_MOCK_PICKUPS);
+  const [transactions, setTransactions] = useState<Transaction[]>(INITIAL_MOCK_TRANSACTIONS);
+
+  // Helper for generating deterministic IDs in mock
+  const generateId = () => Math.random().toString(36).substring(2, 9);
+
+  const handleUpdatePickup = (id: string, status: PickupStatus) => {
+    setPickups(prev => prev.map(p => p.id === id ? { ...p, status } : p));
+  };
+
+  const handleCompletePickup = (pickupId: string, actualWeight: number) => {
+    const pickup = pickups.find(p => p.id === pickupId);
+    if (!pickup) return;
+
+    setPickups(prev => prev.map(p => p.id === pickupId ? { ...p, status: 'COMPLETED' } : p));
+
+    const expectedWeight = pickup.estimated_quantity_kg || 1;
+    const avgExpectedValue = (pickup.estimated_value_min + pickup.estimated_value_max) / 2;
+    const valuePerKg = avgExpectedValue / expectedWeight;
+    const actualValue = valuePerKg * actualWeight;
+
+    const newTx: Transaction = {
+      id: `tx-${generateId()}`,
+      pickup_id: pickup.id,
+      collector_id: MOCK_COLLECTOR_ID,
+      actual_quantity_kg: actualWeight,
+      actual_value: actualValue,
+      transaction_date: new Date().toISOString(),
+      created_at: new Date().toISOString(),
+      items: [
+        {
+          id: `item-${generateId()}`,
+          material_category: pickup.expected_material,
+          quantity_kg: actualWeight,
+          value: actualValue,
+        }
+      ]
+    };
+
+    setTransactions(prev => [newTx, ...prev]);
+  };
 
   // Workable Create Lot Modal State
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
@@ -147,7 +218,7 @@ export default function CollectorWorkspace() {
     try {
       localStorage.removeItem("scrapsetu_auth_user");
     } catch (e) {}
-    window.location.href = "/";
+    window.location.href = "/auth";
   };
 
   const handleLotCreated = (newMatch: LotMatch) => {
@@ -370,6 +441,16 @@ export default function CollectorWorkspace() {
           <T>{activeTab === "price-board" && <LivePriceBoard />}</T>
           <T>{activeTab === "safety-guidance" && <SafetyGuidanceView />}</T>
           <T>{activeTab === "customer-pickup" && <Pickups collector />}</T>
+          <T>{activeTab === 'schedule' && (
+            <CollectionSchedule 
+              pickups={pickups} 
+              onUpdatePickup={handleUpdatePickup}
+              onCompletePickup={handleCompletePickup}
+            />
+          )}</T>
+          <T>{activeTab === 'earnings' && (
+            <EarningsAnalytics transactions={transactions} />
+          )}</T>
         </div>
       </div>
 

@@ -1734,5 +1734,293 @@ export const dictionary:Record<string,[string,string]> = {
   "Non-hazardous if mechanically stripped. STRICTLY PROHIBIT open wire burning (produces toxic dioxins).": [
     "मशीन से आवरण हटाने पर सुरक्षित। तार खुले में जलाना सख्त मना है; इससे ज़हरीली गैस बनती है।",
     "यंत्राने आवरण काढल्यास सुरक्षित. तारा उघड्यावर जाळण्यास सक्त मनाई; विषारी वायू तयार होतो."
+  ],
+  "Collection Schedule": [
+    "कलेक्शन शेड्यूल",
+    ""
+  ],
+  "My Earnings": [
+    "मेरी कमाई",
+    ""
+  ],
+  "AI Scrap Scanner": [
+    "एआई कबाड़ स्कैनर",
+    ""
+  ],
+  "Plastic": [
+    "प्लास्टिक",
+    ""
+  ],
+  "Glass": [
+    "कांच",
+    ""
+  ],
+  "Paper & Cardboard": [
+    "कागज़ और गत्ता",
+    ""
+  ],
+  "Metal — Ferrous": [
+    "धातु - लोहा / फेरस",
+    ""
+  ],
+  "Metal — Ferrous (Iron & Steel)": [
+    "धातु - लोहा (आयरन व स्टील)",
+    ""
+  ],
+  "Metal — Non-Ferrous": [
+    "गैर-फेरस धातु",
+    ""
+  ],
+  "Metal — Non-Ferrous (Copper, Brass, Aluminium)": [
+    "गैर-फेरस धातु (तांबा, पीतल, एल्युमीनियम)",
+    ""
+  ],
+  "E-Waste": [
+    "ई-कचरा",
+    ""
+  ],
+  "Textile / Cloth": [
+    "कपड़ा / टेक्सटाइल",
+    ""
+  ],
+  "Rubber & Other": [
+    "रबर व अन्य",
+    ""
+  ],
+  "Select Category": [
+    "श्रेणी चुनें",
+    ""
+  ],
+  "Plastic (PET Bottles, HDPE, Containers)": [
+    "प्लास्टिक (पीईटी बोतलें, एचडीपीई, डिब्बे)",
+    ""
+  ],
+  "Glass (Bottles & Glassware)": [
+    "कांच (बोतलें और कांच के बर्तन)",
+    ""
+  ],
+  "Paper & Cardboard (Cartons & Kraft)": [
+    "कागज़ और गत्ता (कार्टन और क्राफ्ट)",
+    ""
+  ],
+  "E-Waste (Electronics, Mobiles, PCBs)": [
+    "ई-कचरा (इलेक्ट्रॉनिक्स, मोबाइल, सर्किट बोर्ड)",
+    ""
+  ],
+  "Textile / Cloth (Cotton & Fabrics)": [
+    "कपड़ा / टेक्सटाइल (सूती व कपड़े)",
+    ""
+  ],
+  "Rubber & Other (Tyres & Scrap Rubber)": [
+    "रबर व अन्य (टायर और रबर स्क्रैप)",
+    ""
+  ],
+  "Today's Expected": [
+    "आज की अपेक्षित आय",
+    ""
+  ],
+  "Route Dist.": [
+    "रूट दूरी",
+    ""
+  ],
+  "Pickups": [
+    "पिकअप",
+    ""
+  ],
+  "Today": [
+    "आज",
+    ""
+  ],
+  "Upcoming": [
+    "आगामी",
+    ""
+  ],
+  "Completed": [
+    "पूर्ण",
+    ""
+  ],
+  "Reject": [
+    "अस्वीकार करें",
+    ""
+  ],
+  "Accept": [
+    "स्वीकार करें",
+    ""
+  ],
+  "Cancel": [
+    "रद्द करें",
+    ""
+  ],
+  "Start Pickup": [
+    "पिकअप शुरू करें",
+    ""
+  ],
+  "Complete & Record": [
+    "पूर्ण व दर्ज करें",
+    ""
+  ],
+  "No pickups scheduled for today.": [
+    "आज के लिए कोई पिकअप निर्धारित नहीं है।",
+    ""
+  ],
+  "No upcoming pickups scheduled.": [
+    "कोई आगामी पिकअप निर्धारित नहीं है।",
+    ""
+  ],
+  "No completed pickups yet.": [
+    "अभी तक कोई पूर्ण पिकअप नहीं है।",
+    ""
+  ],
+  "REQUESTED": [
+    "अनुरोधित",
+    ""
+  ],
+  "SCHEDULED": [
+    "निर्धारित",
+    ""
+  ],
+  "IN_PROGRESS": [
+    "प्रगति पर",
+    ""
+  ],
+  "COMPLETED": [
+    "पूर्ण",
+    ""
+  ],
+  "REJECTED": [
+    "अस्वीकृत",
+    ""
+  ],
+  "CANCELLED": [
+    "रद्द",
+    ""
+  ],
+  "MISSED": [
+    "छूटा हुआ",
+    ""
+  ],
+  "This Month's Earnings": [
+    "इस महीने की कुल कमाई",
+    ""
+  ],
+  "THIS MONTH'S EARNINGS": [
+    "इस महीने की कुल कमाई",
+    ""
+  ],
+  "First month — comparisons will appear next month.": [
+    "पहला महीना — तुलना अगले महीने प्रदर्शित होगी।",
+    ""
+  ],
+  "Welcome! Complete your first pickups to start generating insights about your business.": [
+    "स्वागत है! अपने व्यापार के आंकड़े देखने के लिए पहले पिकअप पूरे करें।",
+    ""
+  ],
+  "Total Weight": [
+    "कुल वजन",
+    ""
+  ],
+  "Completed Pickups": [
+    "सफल पिकअप",
+    ""
+  ],
+  "Avg. per Pickup": [
+    "औसत प्रति पिकअप",
+    ""
+  ],
+  "Top Earning Materials": [
+    "सर्वाधिक कमाई वाली सामग्रियां",
+    ""
+  ],
+  "No materials collected this month yet.": [
+    "इस महीने अभी तक कोई सामग्री एकत्र नहीं की गई है।",
+    ""
+  ],
+  "more than last month": [
+    "पिछले महीने से अधिक",
+    ""
+  ],
+  "less than last month": [
+    "पिछले महीने से कम",
+    ""
+  ],
+  "Collection Schedule": [
+    "कलेक्शन शेड्यूल",
+    ""
+  ],
+  "My Earnings": [
+    "मेरी कमाई",
+    ""
+  ],
+  "Plastic": [
+    "प्लास्टिक",
+    ""
+  ],
+  "Glass": [
+    "कांच",
+    ""
+  ],
+  "Paper & Cardboard": [
+    "कागज और गत्ता",
+    ""
+  ],
+  "Metal — Ferrous": [
+    "धातु — लौह (लोहा/स्टील)",
+    ""
+  ],
+  "Metal — Ferrous (Iron & Steel)": [
+    "धातु — लौह (लोहा व स्टील)",
+    ""
+  ],
+  "Metal — Non-Ferrous": [
+    "धातु — अलौह (तांबा/पीतल/अल्युमिनियम)",
+    ""
+  ],
+  "Metal — Non-Ferrous (Copper, Brass, Aluminium)": [
+    "धातु — अलौह (तांबा, पीतल, एल्युमिनियम)",
+    ""
+  ],
+  "E-Waste": [
+    "ई-कचरा",
+    ""
+  ],
+  "Textile / Cloth": [
+    "कपड़ा / वस्त्र",
+    ""
+  ],
+  "Rubber & Other": [
+    "रबर व अन्य",
+    ""
+  ],
+  "Material": [
+    "सामग्री",
+    ""
+  ],
+  "Select Material Category": [
+    "सामग्री श्रेणी चुनें",
+    ""
+  ],
+  "Select E-Waste Category": [
+    "सामग्री श्रेणी चुनें",
+    ""
+  ],
+  "THIS MONTH'S EARNINGS": [
+    "इस महीने की कमाई",
+    ""
+  ],
+  "This Month's Earnings": [
+    "इस महीने की कमाई",
+    ""
+  ],
+  "TOTAL WEIGHT": [
+    "कुल वजन",
+    ""
+  ],
+  "COMPLETED PICKUPS": [
+    "पूरे किए गए पिकअप",
+    ""
+  ],
+  "AVG. PER PICKUP": [
+    "औसत प्रति पिकअप",
+    ""
   ]
 };

@@ -136,9 +136,10 @@ export default function Header({
   // Nav items per role
   const collectorTabs: NavTabItem[] = [
     { id: 'collector-scan', label: 'AI Scrap Scanner', icon: Sparkles, isAi: true },
+    { id: 'schedule', label: 'Collection Schedule', icon: Truck, count: pickupCount },
+    { id: 'earnings', label: 'My Earnings', icon: TrendingUp },
     { id: 'price-board', label: 'Price Board', icon: TrendingUp },
     { id: 'safety-guidance', label: 'Worker Safety', icon: AlertTriangle },
-    { id: 'customer-pickup', label: 'Doorstep Pickups', icon: Truck, count: pickupCount },
   ];
 
   const recyclerTabs: NavTabItem[] = [
