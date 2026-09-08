@@ -1,0 +1,51 @@
+# ==============================================================================
+# SmartScrapSetu — Git Ignore Configuration
+# Updated: 2026-09-08
+# ==============================================================================
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing & Coverage
+coverage/
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# Documentation builds
+docs/
+
+# OS & Environment Files
+.DS_Store
+Thumbs.db
+*.pem
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel & Supabase Local Artifacts
+.vercel/
+.supabase/
+
+# Python Virtual Environments & Cache
+venv/
+.venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Local Agent & IDE Configuration
+.agent/
+.gemini/
+.docs/
+scratch/
